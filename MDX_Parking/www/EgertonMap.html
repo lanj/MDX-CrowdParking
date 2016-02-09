@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style>
+		#map {
+			width:500px;
+			height:400px;
+			border:1px;
+			background-color:#CCC;
+			
+		}
+	</style>
+
+	  
+  </head>
+  <body>
+  	<div id="map"></div>
+	<script >
+	  function initMap() {
+		  var mapDiv = document.getElementById('map');
+		  var map = new google.maps.Map(mapDiv, {
+			 
+			  
+		 	 // coordinates of Egerton gardens pay by phone bays
+			  center: {lat:51.5880536, lng: -0.2288136},
+		  zoom: 17
+		  
+	  });
+	  
+  	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
+	</script>
+	
+  </body>
+</html>
