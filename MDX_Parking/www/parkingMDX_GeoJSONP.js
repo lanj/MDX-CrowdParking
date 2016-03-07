@@ -20,11 +20,15 @@ eqfeed_callback({
 	"properties": { "street": "st josephs grove"}
 },
 {"type": "Feature",
-	"geometry":{ "type": "Point", "coordinates": [-0.2289985, 51.5880644 ]},
+	"geometry":{ "type": "Point", "coordinates": [-0.2289985, 51.5880684 ]},
 	"properties": { "street": "st josephs grove"}
 },
 {"type": "Feature",
-	"geometry" :{"type": "Point", "coordinates": [-0.2308136 , 51.5880407 ]},
+	"geometry" :{"type": "Point", "coordinates": [-0.2307985 , 51.5882007 ]},
+	"properties": {"street": "st josephs grove"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2327136 , 51.5886297 ]},
 	"properties": {"street": "st josephs grove"}
 },
 {"type": "Feature",
