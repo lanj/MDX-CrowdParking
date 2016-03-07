@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style>
+		#map {
+			width:500px;
+			height:400px;
+			border:1px;
+			background-color:#CCC;
+			
+		}
+	</style>
+
+	  
+  </head>
+  <body>
+  	<div id="map"></div>
+	<script >
+	  function initMap() {
+		  var mapDiv = document.getElementById('map');
+		  var map = new google.maps.Map(mapDiv, {
+			  /**
+			  		geo-cordinates for Egerton gardens parking bay.
+			  		51.5880536 ,0.2288136
+			  */
+			  
+		 	 // coordinates of Middlesex University
+			  center: {lat:51.5890, lng: -0.2280},
+		  zoom: 17
+		  
+	  });
+	  
+  	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
+	</script>
+	
+  </body>
+</html>
+

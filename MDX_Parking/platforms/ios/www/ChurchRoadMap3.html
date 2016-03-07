@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset ="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+	<title> Media queriees in link elements </title>
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+	
+    <script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js"></script>
+
+		
+
+	
+  </head>
+  <body>
+	  
+
+	<header>
+		<div id=logo>
+		</div>
+	</header> 
+
+	<div id="container"> 
+		<nav>
+			<ul id="menu">
+				<li class="menu"><a> Home  </a> </li>
+				<li class="menu"><a> Support </a> </li>	
+				<li class="menu"><a> Exit </a> </li>			
+			</ul>
+	  	<nav> 
+	
+    	<section id="breadcrumb"><h2 align="center"> Church Road Paybyphone location </h2></section>
+
+	
+  		<div id="map"></div>
+		
+		<script >
+	  		function initMap() {
+		  	  	var mapDiv = document.getElementById('map');
+		  	  	var map = new google.maps.Map(mapDiv, {
+			 
+			  
+		 	 // coordinates of Church Road pay by phone bays -0.2259573,51.5898860, 
+			 //Payment Parking Mon-Sat 9am-5.30pm Max stay 1hr 30mins: 
+			 //LC9326 Up to 15 mins £0.50, Up to 30 mins £1.00, Up to 1 hour £2.00, Up to 90 mins £3.00
+			 	 center: {lat:51.5898860, lng: -0.2259573},  zoom: 17
+		  
+	 	 });
+	  
+  		}
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+	
+
+ <footer>
+ 	 <nav>
+ 		<ul id="menu">
+ 			<li class="menu"><a> Previous  </a> </li>
+ 			<li class="menu"><a> Save</a> </li>	
+ 			<li class="menu"><a> Select </a> </li>
+			<li class="menu"><a> Next </a> </li>			
+ 		</ul>
+   	</nav>
+	  
+  </footer>
+</div>
+
+  </body>
+  
+</html>
