@@ -16,6 +16,15 @@
 
 			var map ;
 			
+			var parkLatLng ;
+			
+		    var info;
+			
+			var streets = [];
+			
+			var marker = [];
+			
+			
 
 		  		function initMap() {
 				
@@ -37,17 +46,57 @@
 						
 			}
 			
-	        window.eqfeed_callback = function(results) {
-	          for (var i = 0; i < results.features.length; i++) {
-	            var coords = results.features[i].geometry.coordinates;
-	            var parkLatLng = new google.maps.LatLng(coords[1],coords[0]);
-	            var marker = new google.maps.Marker({
-	              position: parkLatLng,
-					map: map
-				 });
-	          }
-	        }
 
+			
+	        window.eqfeed_callback = function(results) {
+			
+	          for (var i = 0; i < results.features.length; i++) {
+			  
+	            var coords = results.features[i].geometry.coordinates;
+				var streets = results.features[i].properties.street;
+
+	            parkLatLng = new google.maps.LatLng(coords[1],coords[0]);
+				
+	            var marker = new google.maps.Marker({
+
+				  position: parkLatLng,
+				  map: map
+				
+				 })
+				 
+				 marker.setMap(map);
+				 addListenerMarker(marker , streets , map );
+
+
+			    
+	          }
+			  
+		  }
+		  
+		
+		
+		  		function addListenerMarker(aMarker, aStreet , map ){
+			    
+						
+					
+						//marker.setLabel(streets);
+						var info = new google.maps.InfoWindow({
+
+								content: "" + aStreet  
+								
+							});
+					
+				  google.maps.event.addListener(aMarker, 'click', function(event) {	
+
+				
+						info.open(map, aMarker);
+						
+						
+				   });
+				  
+				}
+
+        
 
 		
 			google.maps.event.addDomListener(window, 'load', initMap);
@@ -59,8 +108,8 @@
  <body>
 
 	<header>
-		<div id=logo>
-		</div>
+		<div id="logo">
+ 		</div>
 	</header> 
 
 	<div id="container"> 
@@ -74,19 +123,26 @@
 	
     	<section id="breadcrumb"><h2 align="center">  </h2></section>
 		</br>
-
-  		<div id="map"> </p></div>	
+		
+  		<div id="map"> </div>	
 	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
 	</script>
- <footer>
- 		<ul id="menu" class="Floor"> 
- 			<li class="menuFloor shadow"><a> Previous  </a> </li>
- 			<li class="menuFloor shadow"><a> Add </a> </li>	
- 			<li class="menuFloor shadow"><a> Exit </a> </li>
-			<li class="menuFloor shadow"><a> Next </a> </li>			
- 		</ul>
+	
+    <footer>
+    	<ul id="menu" class="Floor"> 
+		<form>		
+    	 <li class="menuFloor shadow"><a> Previous  </a> </li>
+		
+    	 <li class="menuFloor shadow"><button type="button" disabled>Update </button></li>	
+		<li class="menuFloor shadow"><button type="button" disabled>Report </button></li>
+		
+   		<li class="menuFloor shadow"><a> Next </a> </li>	
+		</form>			
+    </ul>
 	  
-  </footer>
+     </footer>
+</div>
+
   </body>
   
 </html>
