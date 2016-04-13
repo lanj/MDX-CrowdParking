@@ -12,5 +12,4 @@ The project aims are the following:
 * Evaluation of the project by comparing the project with similar technology on market.
 
 
-
 The project uses available / open-source web solutions, and functionality of smart-phone / tablet.  
