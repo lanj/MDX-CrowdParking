@@ -1,4 +1,8 @@
-
+/**
+ * @fileOverview JSON file for providing geo-data
+ * @author <a href="mailto:lj297@mdx.ac.uk">Lanre Jinadu</a>
+ * @version 1.1  
+ */
 
 {
 "type": "FeatureCollection",

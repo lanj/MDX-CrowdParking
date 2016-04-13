@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	<meta charset ="utf-8"/>
-	<!-- display size and width based on mobile device width and height using viewport tag -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-	<!--  refer to main.css to adjust layout and styling -->
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-	<title> MDX Parking</title>
-	
-	<!-- call jquery library for css styling -->
-    <script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js"></script>
-    
-     <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js"></script>
-     
-
-			<script >
+/**
+ * @fileOverview implement google map for parking
+ * @author <a href="mailto:lj297@mdx.ac.uk">Lanre Jinadu</a>
+ * @version 0.4
+ */
 	
 	        /**
 	          * declare global variables for taking map, LatLng , infoWindow , array of Street and  array of Marker
+ 			  * @class parkingMDX_GeoJSON
+			  * @param {Map}
+              * @param {LatLng} parkLatLng
+              * @param {InfoWindow} info
+              * @param {Marker []} marker
 	          */
 
 			var map ;
@@ -44,8 +37,8 @@
 				*
 				*apply maptype and setup map coordinates 
 				*@constructor map;
-				*@param Div;
-				*@param MapOption;
+				*@param {Div};
+				*@param { MapOption} mapOptions;
 				**/
 			  var mapOptions = {
 						zoom: 15 ,
@@ -72,11 +65,12 @@
 			/**
 			  *  callback function, runs a loop and 
 			  *  set coordinates lat and longitude
-			  *  to each marker
+			  *  to each marker 
+			  *  @constructor eqfeed_callback
 			  *  use {@link maps#LatLng} to set the  marker coordinates 
               *  use {@link maps.Marker} to create marker for each coordinate
 			  *  use {@link marker.setMap} to set marker 
-			  *  @param {results} returned results from GEOJSON class
+			  *  @param {Array}results returned results from GEOJSON class
 			  *
 			  */
 			
@@ -106,11 +100,11 @@
 		  }
 		  
 			    /**
-		          *   function addListener listens for click event 
+		          *   function addListener class for click event 
 		   		  *   and calls the InfoWindow function to get parking details
-		          *   @param {Marker}
-		          *   @param {Street}
-		          *   @param {map }
+		          *   @param {Marker}aMarker
+		          *   @param {Street} aSTreet
+		          *   @param {Map } map
 		          */
 		
 		  		function addListenerMarker(aMarker, aStreet , map ){
@@ -122,7 +116,13 @@
 								
 						});
 					
-				  google.maps.event.addListener(aMarker, 'click', function(event) {	
+					  /**
+						*  add listener
+						* @param {Marker} aMarker
+						* @param {MouseEvent} click
+						* @param {Event} 
+						*/
+				  	  google.maps.event.addListener(aMarker, 'click', function(event) {	
 
 				
 						info.open(map, aMarker);
@@ -135,56 +135,4 @@
         
 
 		
-			google.maps.event.addDomListener(window, 'load', initMap);
-		
-			</script>
-
-  </head>
-  
-  
- <body>
-
-	<header>
-		<div id="logo">
- 		</div>
-	</header> 
-
-    <!-- container for mobile app -->
-	<div id="container"> 
-		<nav>
-			<!-- set up top menu   -->
-			<ul id="menu">
-				<li class="menu"><a> Home  </a> </li>
-				<li class="menu"><a> Support </a> </li>	
-				<li class="menu"><a> Exit </a> </li>			
-			</ul>
-	  	<nav> 
-	
-    	<section id="breadcrumb"><h2 align="center">  </h2></section>
-		</br>
-		
-  		<div id="map"> </div>
-	<!--   call google api for maps   -->	
-	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
-	</script>
-	
-	<!--  adds the command and navigation buttons for the mobile app -->
-	
-    <footer>
-    	<ul id="menu" class="Floor"> 
-		<form>		
-    	 <li class="menuFloor shadow"><a> Previous  </a> </li>
-		
-    	 <li class="menuFloor shadow"><button type="button" disabled>Update </button></li>	
-		<li class="menuFloor shadow"><button type="button" disabled>Report </button></li>
-		
-   		<li class="menuFloor shadow"><a> Next </a> </li>	
-		</form>			
-    </ul>
-	  
-     </footer>
-</div>
-
-  </body>
-  
-</html>
+		google.maps.event.addDomListener(window, 'load', initMap);
