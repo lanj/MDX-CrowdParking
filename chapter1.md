@@ -51,11 +51,9 @@ The project employed staged releases for development of the project to ensure re
 
 The project makes use of the following resources for implementation of the application. For more information please refer to the links 
 
-GOOGLE MAPS API:
-  
-* [GOOGLE MAPS](https://developers.google.com/maps/) 
+**GOOGLE MAPS API**: Google provides Application program interface (API) to allow access to google's web services. The project makes use of the googlemap api for access to geo-location services.  Google maps API is implemented using HTML5 and JavaScript language. For more information click the following link about [Google Maps](https://developers.google.com/maps/).
 
-**GEOJSON** : Technology used for encoding geographic features as well as their non-spatial attributes. Geojson is derived from JSON (JavaScript Object Notation). The Project uses Geojson for setting coordinates and parking information for each parking feature. Click on link to know more about [GEOJSON](http://geojson.org/)
+**GEOJSON** : Technology used for encoding geographic features as well as their non-spatial attributes. Geojson is derived from JSON (JavaScript Object Notation). The Project uses Geojson for setting coordinates and parking information for each parking feature. Click on link to know more about [GEOJSON](http://geojson.org/).
 
 **JQUERY**: JavaScript Library used for scripting stylesheets used in html pages. Click on link to know more about [JQUERY](http://jquery.com/).
 
