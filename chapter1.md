@@ -17,8 +17,9 @@ The project uses available / open-source web solutions, and functionality of sma
 
 
 ## About Crowd-sourcing
+The argument for the use of crowdsourcing has been its successful application by other companies such as Google-map for gathering data on congestion. 
 
-
+Using previous research carried out by [ParkJam](http://parking.kmi.open.ac.uk/), the project intends to address issues such as incentives for takeup of users, addressing possible weakness of geo-data type as spatial and data bias when related to parking in particular facilities.
 
 **Take up**
 Crowd-source motivation to participate can either be  intrinsic or extrinsic. While it is hoped that the rewards gained from using the device will be a sufficient motivator, the project has also adapted Gamification as additional incentive.
