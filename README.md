@@ -19,12 +19,11 @@
 
 
 
-
-
-
+* Introduction
 * Tutorial
 * Platform support
 * Installation
-* Using
+* Documentation
+* API
 * Help
 
