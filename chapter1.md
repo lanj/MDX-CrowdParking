@@ -41,9 +41,19 @@ The argument for the use of Mobile crowd-sourcing has been its successful applic
 
 Success of crowdsourcing is dependent on the confidence of the data and system, the uptake or participation of users and validity of the data processed.
 
+**Dependency issues**
+
 A major issue would be ability of users to update data available, failure of participants to do this can create data gaps due to none use.
 
-Another issue is confidence and validity of data , crowdsource data can suffer loss of data integrity from data pollution, which in term  can affect both confidence and validity. 
+**Confidence in system**
+
+Another issue is user confidence and validity of data , crowdsource data can suffer loss of data integrity from data pollution, which in term  can affect both confidence and validity. 
+
+**Privacy **
+
+There may be concern about use of location-services, user data and their privacy.
+
+**Previous research**
 
 Using previous research carried out by [ParkJam](http://parking.kmi.open.ac.uk/)  (Kopeck, Jacek & Domingue, John, 2012), the project intends to address issues such as incentives for takeup of users, addressing possible weakness of geo-data type as spatial and data bias when related to parking in particular facilities.
 
