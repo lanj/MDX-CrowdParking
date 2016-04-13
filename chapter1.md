@@ -22,6 +22,19 @@ The project uses available / open-source web solutions, and functionality of sma
 
 
 
+
+## Implementation and evaluation
+To ensure widest participation of users the project used mobile cross platform for deployment.
+
+The project used web-browser and hybrid mobile development as the platform. 
+
+Employing web-browser will ensure broaden participation of users with different mobile devices. 
+
+The project reuses web 2.0 technology, Google map for displaying geo-location data which is needed to identify places of interest (POI) for end users. 
+
+The project employed staged releases for development of the project to ensure reuse of components and a working product at each milestone.  It will use native hybrid to ensure access to native features for location services.  And will mitigate risk by focusing on developing small pilot prototype which will provide information about parking in a small area and will involve using small number of participants. 
+
+
 ## Resources
 
 The project makes use of the following resources for implementation of the application. For more information please refer to the links 
