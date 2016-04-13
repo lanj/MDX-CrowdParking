@@ -2,11 +2,13 @@
 <html>
 	<head>
 	<meta charset ="utf-8"/>
+	<!-- display size and width based on mobile device width and height using viewport tag -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+	<!--  refer to main.css to adjust layout and styling -->
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 	<title> MDX Parking</title>
-	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
 	
+	<!-- call jquery library for css styling -->
     <script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js"></script>
     
      <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js"></script>
@@ -24,20 +26,27 @@
 			
 			var marker = [];
 			
-			
-
-		  		function initMap() {
+			/**
+			  * Display map with marker values
+			  */
+		  	function initMap() {
 				
 				
-			  	  	var mapOptions = {
+			  /** iniiate map class and setup map coordinates **/
+			  var mapOptions = {
 						zoom: 15 ,
 						center: {lat: 51.5898860, lng: -0.2269573 }, mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
+					
 			  	  	map = new google.maps.Map(document.getElementById('map'), mapOptions);
 				
 
 					        var script = document.createElement('script');
-
+							
+							/**
+							  *  get GeoJson script with parking details for location.
+							  *  
+							  */
 					        script.src = 'parkingMDX_GeoJSONP.js';
 					        document.getElementsByTagName('head')[0].appendChild(script);
 							
@@ -46,7 +55,11 @@
 						
 			}
 			
-
+			/**
+			  *  callback function, runs a loop and 
+			  *  assigns long, lat and from results array
+			  *  to each marker, then adds listener to each marker
+			  */
 			
 	        window.eqfeed_callback = function(results) {
 			
@@ -73,18 +86,20 @@
 			  
 		  }
 		  
-		
+			    /**
+		          *   function addListener listens for click event 
+		   		  *   and calls the InfoWindow function to get parking details
+		          *
+		          */
 		
 		  		function addListenerMarker(aMarker, aStreet , map ){
 			    
-						
 					
 						//marker.setLabel(streets);
 						var info = new google.maps.InfoWindow({
-
 								content: "" + aStreet  
 								
-							});
+						});
 					
 				  google.maps.event.addListener(aMarker, 'click', function(event) {	
 
@@ -105,6 +120,7 @@
 
   </head>
   
+  
  <body>
 
 	<header>
@@ -112,8 +128,10 @@
  		</div>
 	</header> 
 
+    <!-- container for mobile app -->
 	<div id="container"> 
 		<nav>
+			<!-- set up top menu   -->
 			<ul id="menu">
 				<li class="menu"><a> Home  </a> </li>
 				<li class="menu"><a> Support </a> </li>	
@@ -124,10 +142,12 @@
     	<section id="breadcrumb"><h2 align="center">  </h2></section>
 		</br>
 		
-  		<div id="map"> </div>	
+  		<div id="map"> </div>
+	<!--   call google api for maps   -->	
 	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
 	</script>
 	
+	<!--  adds the command and navigation buttons for the mobile app -->
     <footer>
     	<ul id="menu" class="Floor"> 
 		<form>		
