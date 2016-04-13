@@ -2,8 +2,15 @@
 
 Parking Locator Mobile App
 
-This is a project to develop a mobile application to aid users in their search for parking spaces through the use of web technology, API's and crowdsourcing techniques. 
+This project aims to investigate the feasibility of crowd-sourcing for providing parking solutions.
 
-The aim is to give the user access to parking information by gathering crowd sourced data which can provide more time-sensitive, accurate information on both location and availability of parking resources. Coupled together other authoritative source of information (Mash-up, see reference 3), it hopes to provide users with usability and functionality that can make searching for parking spaces more practicable and user friendly while in traffic or in a hurry.
+The project aims are the following:
+
+* To give the user access to parking information through crowd sourced data.
+* Develop web application as platform to provide information .
+* Use open-source technology and Mash-up technology to make it available to users.
+* Evaluation of the project by comparing the project with similar technology currently on market.
+
+
 
 The project uses available / open-source web solutions, and functionality of smart-phone / tablet.  
