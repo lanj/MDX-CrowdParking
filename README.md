@@ -14,6 +14,9 @@
 
 
 
+### INTRODUCTION
+
+
 
 This project aims to investigate the feasibility of crowd-sourcing for providing parking solutions.
 
@@ -26,3 +29,12 @@ The project aims are the following:
 
 
 The project uses available / open-source web solutions, and functionality of smart-phone / tablet.  
+
+
+
+* Tutorial
+* Platform support
+* Installation
+* Using
+* Help
+
