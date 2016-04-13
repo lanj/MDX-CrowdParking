@@ -20,7 +20,8 @@ The project uses available / open-source web solutions, and functionality of sma
 
 
 
-
+**Take up**
+Crowd-source motivation to participate can either be  intrinsic or extrinsic. While it is hoped that the rewards gained from using the device will be a sufficient motivator, the project has also adapted Gamification as additional incentive.
 
 ## Constraints 
 
