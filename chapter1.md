@@ -26,6 +26,10 @@ The project uses available / open-source web solutions, and functionality of sma
 
 Evaluation and testing was focused within small area to manage risks  small number of participants.
 
+The technology and platform used creates constraints on development and performance.  
+
+
+
 
 
 
@@ -47,10 +51,17 @@ The project employed staged releases for development of the project to ensure re
 
 The project makes use of the following resources for implementation of the application. For more information please refer to the links 
 
+GOOGLE MAPS API:
+  
 * [GOOGLE MAPS](https://developers.google.com/maps/) 
-* [GEOJSON](http://geojson.org/)
-* [JQUERY](http://jquery.com/)
-* [JQUERY MOBILE](https://jquerymobile.com/)
-* [HTML5 ](https://html.spec.whatwg.org/multipage/)
+
+**GEOJSON** : Technology used for encoding geographic features as well as their non-spatial attributes. Geojson is derived from JSON (JavaScript Object Notation). The Project uses Geojson for setting coordinates and parking information for each parking feature. Click on link to know more about [GEOJSON](http://geojson.org/)
+
+**JQUERY**: JavaScript Library used for scripting stylesheets used in html pages. Click on link to know more about [JQUERY](http://jquery.com/).
+
+**JQuery mobile**: JavaScript Library based on JQuery but developed for use on mobile platforms.Click on link to know more about  [JQUERY MOBILE](https://jquerymobile.com/).
+
+**Html5** provides tags "W3C GEOLOCATION" for Geolocation which can be used on web pages and web-application. Click on link to find out more about [HTML5 ](https://html.spec.whatwg.org/multipage/.
+
 
 
