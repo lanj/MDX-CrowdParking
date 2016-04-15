@@ -19,6 +19,18 @@
   
   
  <body>
+	 
+	<!-- BEGIN QUNIT TEST HARNESS -->
+<div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-1.23.1.js"></script>
+<script>
+  QUnit.test( "QTest ", function( assert ) {
+    var value = "hello";
+    assert.equal( value, "hello", "Expected value :hello" );
+  });
+</script>
+  <!-- END QUNIT TEST ->
 
 	<header>
 		<div id="logo">

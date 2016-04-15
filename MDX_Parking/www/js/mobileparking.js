@@ -54,7 +54,7 @@
 							  *  get GeoJson script with parking details for location.
 							  *  
 							  */
-					        script.src = 'parkingMDX_GeoJSONP.js';
+					        script.src = 'parkingMDX_GeoJSONP2.js';
 					        document.getElementsByTagName('head')[0].appendChild(script);
 							
 
@@ -80,7 +80,9 @@
 			  
 	            var coords = results.features[i].geometry.coordinates;
 				var streets = results.features[i].properties.street;
-
+				var bays = results.features[i].properties.baytype;
+				//var bays = "blah";
+				
 	            parkLatLng = new google.maps.LatLng(coords[1],coords[0]);
 				
 	            var marker = new google.maps.Marker({
@@ -91,7 +93,7 @@
 				 })
 				 
 				 marker.setMap(map);
-				 addListenerMarker(marker , streets , map );
+				 addListenerMarker(marker , streets, bays , map );
 
 
 			    
@@ -107,12 +109,14 @@
 		          *   @param {Map } map
 		          */
 		
-		  		function addListenerMarker(aMarker, aStreet , map ){
+		  		function addListenerMarker(aMarker, aStreet , aBay , map ){
 			    
 					
+					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p><b>Restrictions:</b>" + aBay + "  " + " (last updated: 15|04|16 ) </p>" + "<p> <a href= blah+html> More Info </a> </p> "  + " <p> <a href= blah1+html> Park </a>" + "  |  " + " <a href= blah2+html> Leave </a></p>  </div> " ;
 						//marker.setLabel(streets);
 						var info = new google.maps.InfoWindow({
-								content: "" + aStreet  
+								//content: "" + aStreet + " "+ aBay  
+								content:  parkinContent 
 								
 						});
 					
