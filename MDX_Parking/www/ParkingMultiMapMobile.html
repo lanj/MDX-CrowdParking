@@ -13,136 +13,24 @@
     
      <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js"></script>
      
-
-			<script >
-	
-	        /**
-	          * declare global variables for taking map, LatLng , infoWindow , array of Street and  array of Marker
-	          */
-
-			var map ;
-			
-			var parkLatLng ;
-			
-		    var info;
-			
-			var streets = [];
-			
-			var marker = [];
-			
-			
-			
-			/**		
-			  * initiate Map using google.maps.Map and mapOptions
-    		  * @param none;
-			  **/
-			
-		  	  function initMap() {
-				
-				
-			  /***
-				*
-				*apply maptype and setup map coordinates 
-				*@constructor map;
-				*@param Div;
-				*@param MapOption;
-				**/
-			  var mapOptions = {
-						zoom: 15 ,
-						center: {lat: 51.5898860, lng: -0.2269573 }, mapTypeId: google.maps.MapTypeId.ROADMAP
-					};
-					
-			  	  	map = new google.maps.Map(document.getElementById('map'), mapOptions);
-				
-
-					        var script = document.createElement('script');
-							
-							/**
-							  *  get GeoJson script with parking details for location.
-							  *  
-							  */
-					        script.src = 'parkingMDX_GeoJSONP.js';
-					        document.getElementsByTagName('head')[0].appendChild(script);
-							
-
-							
-						
-			}
-			
-			/**
-			  *  callback function, runs a loop and 
-			  *  set coordinates lat and longitude
-			  *  to each marker
-			  *  use {@link maps#LatLng} to set the  marker coordinates 
-              *  use {@link maps.Marker} to create marker for each coordinate
-			  *  use {@link marker.setMap} to set marker 
-			  *  @param {results} returned results from GEOJSON class
-			  *
-			  */
-			
-	        window.eqfeed_callback = function(results) {
-			
-	          for (var i = 0; i < results.features.length; i++) {
-			  
-	            var coords = results.features[i].geometry.coordinates;
-				var streets = results.features[i].properties.street;
-
-	            parkLatLng = new google.maps.LatLng(coords[1],coords[0]);
-				
-	            var marker = new google.maps.Marker({
-
-				  position: parkLatLng,
-				  map: map
-				
-				 })
-				 
-				 marker.setMap(map);
-				 addListenerMarker(marker , streets , map );
-
-
-			    
-	          }
-			  
-		  }
-		  
-			    /**
-		          *   function addListener listens for click event 
-		   		  *   and calls the InfoWindow function to get parking details
-		          *   @param {Marker}
-		          *   @param {Street}
-		          *   @param {map }
-		          */
-		
-		  		function addListenerMarker(aMarker, aStreet , map ){
-			    
-					
-						//marker.setLabel(streets);
-						var info = new google.maps.InfoWindow({
-								content: "" + aStreet  
-								
-						});
-					
-				  google.maps.event.addListener(aMarker, 'click', function(event) {	
-
-				
-						info.open(map, aMarker);
-						
-						
-				   });
-				  
-				}
-
-        
-
-		
-			google.maps.event.addDomListener(window, 'load', initMap);
-		
-			</script>
+     <script type="text/javascript" charset="utf-8" src="js/mobileparking.js"></script>
 
   </head>
   
   
  <body>
+	 
+	<!-- BEGIN QUNIT TEST HARNESS -->
+<div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-1.23.1.js"></script>
+<script>
+  QUnit.test( "QTest ", function( assert ) {
+    var value = "hello";
+    assert.equal( value, "hello", "Expected value :hello" );
+  });
+</script>
+  <!-- END QUNIT TEST ->
 
 	<header>
 		<div id="logo">

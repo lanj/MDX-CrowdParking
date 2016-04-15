@@ -54,7 +54,7 @@
 							  *  get GeoJson script with parking details for location.
 							  *  
 							  */
-					        script.src = 'parkingMDX_GeoJSONP2.js';
+					        script.src = 'js/parkingMDX_GeoJSONP.js';
 					        document.getElementsByTagName('head')[0].appendChild(script);
 							
 
