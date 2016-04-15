@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset ="utf-8"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+	<title> Media queriees in link elements </title>
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
+	
+    <script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js"></script>
+
+		
+
+	
+  </head>
+  <body>
+	  
+
+	<header>
+		<div id=logo>
+		</div>
+	</header> 
+
+	<div id="container"> 
+		<nav>
+			<ul id="menu">
+				<li class="menu"><a> Home  </a> </li>
+				<li class="menu"><a> Support </a> </li>	
+				<li class="menu"><a> Exit </a> </li>			
+			</ul>
+	  	<nav> 
+	
+	    <section id="breadcrumb"><h2 align="center"></section>
+		</br>
+	
+  	<div id="map"></div>
+	<script >
+	  function initMap() {
+		  var mapDiv = document.getElementById('map');
+		  var map = new google.maps.Map(mapDiv, {
+			 
+			  
+		 	 // coordinates of Egerton gardens pay by phone bays
+			  center: {lat:51.5880536, lng: -0.2288136},
+		  zoom: 17
+		  
+	  });
+	  
+  	}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
+	</script>
+	
+
+ <footer>
+ 	 <nav>
+ 		<ul id="menu">
+ 			<li class="menu"><a> Previous  </a> </li>
+ 			<li class="menu"><a> Save</a> </li>	
+ 			<li class="menu"><a> Select </a> </li>
+			<li class="menu"><a> Next </a> </li>			
+ 		</ul>
+   	</nav>
+	  
+  </footer>
+</div>
+  </body>
+  
+</html>
