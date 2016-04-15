@@ -30,6 +30,12 @@
     assert.equal( value, "hello", "Expected value :hello" );
   });
 </script>
+
+<script>
+ function closeWin() {
+     window.close();   // Closes the new window
+ }
+</script>
   <!-- END QUNIT TEST ->
 
 	<header>
@@ -42,9 +48,9 @@
 		<nav>
 			<!-- set up top menu   -->
 			<ul id="menu">
-				<li class="menu"><a> Home  </a> </li>
-				<li class="menu"><a> Support </a> </li>	
-				<li class="menu"><a> Exit </a> </li>			
+				<li class="menu"><a href= "ParkingMultiMapMobile.html" target="_self"> Home  </a> </li>
+				<li class="menu"> <a href="Support.html" target="_self"> Support </a> </li>	
+						<li class="menu"><button class="button" type="button" onClick="closeWin()"> location </button></li>						
 			</ul>
 	  	<nav> 
 	
@@ -63,8 +69,8 @@
 		<form>		
     	 <li class="menuFloor shadow"><a> Previous  </a> </li>
 		
-    	 <li class="menuFloor shadow"><button type="button" disabled>Update </button></li>	
-		<li class="menuFloor shadow"><button type="button" disabled>Report </button></li>
+    	 <li class="menuFloor shadow"><button class="button"  type="button" disabled>Update </button></li>	
+		<li class="menuFloor shadow"><button class="button"  type="button" disabled>Report </button></li>
 		
    		<li class="menuFloor shadow"><a> Next </a> </li>	
 		</form>			
