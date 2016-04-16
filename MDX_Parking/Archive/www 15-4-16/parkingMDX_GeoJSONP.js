@@ -1,5 +1,19 @@
+/**
+ * @fileOverview  eqfed_callback json objects
+ * @author <a href="mailto:lj297@mdx.ac.uk">Lanre Jinadu</a>
+ * @version 0.3
+ */
 
 
+/**
+  * 
+  * object returns coordinates and properties of features.
+  * @class eqfeed_callback
+  * @param {features}
+  * @param {geometry}
+  * @param {properties}
+  * @return results
+  */
 eqfeed_callback({
 "type": "FeatureCollection",
 "features": [
