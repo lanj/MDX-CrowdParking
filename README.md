@@ -44,17 +44,3 @@ The app covers the area around Middlesex Hendon campus.
 ### Content
 
 
-
-
-
-* 
-[ Introduction](Introduction.md)
-* 
-[About the Project](MDX-CrowdParking/About MDX Parking.md)
-* [Tutorial](MDX-CrowdParking/Tutorial.md)
-* Platform support
-* Installation
-* Documentation
-* API
-* Support
-
