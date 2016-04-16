@@ -2,8 +2,23 @@
 
 
 ---
+main contributor : lanre jinadu
+lj297@live.mdx.ac.uk
 
-This project investigates the feasibility of crowd-sourcing for providing parking solutions.
+
+
+---
+
+
+
+
+
+**This project investigates the feasibility of crowd-sourcing for providing parking solutions.**
+
+
+
+---
+
 
 The project aims are the following:
 
@@ -16,7 +31,7 @@ The project aims are the following:
 
 ## Parking Locator App
 
-The parking mobile locator is web-app using googlemaps api, HTML5, Javascript and jquery for development. A hybrid version will be developed in future. 
+The parking mobile locator is web-app using googlemaps api, HTML5, Javascript and jquery mobile for development. The project use crowdsourcing for updating parking availability and other parking issues.
 
 The app allows the user to check parking, update system with new parking information, report occupation of a parking location.
 The app covers the area around Middlesex Hendon campus.
@@ -31,11 +46,12 @@ The app covers the area around Middlesex Hendon campus.
 
 
 
-* Introduction
-* Tutorial
+*[ Introduction](Introduction.md)
+* [About the Project](About MDX Parking.md)
+* [Tutorial](Tutorial.md)
 * Platform support
 * Installation
 * Documentation
 * API
-* Help
+* Support
 
