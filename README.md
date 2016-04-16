@@ -6,19 +6,13 @@ main contributor : lanre jinadu
 lj297@live.mdx.ac.uk
 
 
-
 ---
-
-
 
 
 
 **This project investigates the feasibility of crowd-sourcing for providing parking solutions.**
 
-
-
 ---
-
 
 The project aims are the following:
 
