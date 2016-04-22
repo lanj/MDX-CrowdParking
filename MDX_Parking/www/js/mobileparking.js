@@ -1,3 +1,4 @@
+
 /**
  * @fileOverview implement google map for parking
  * @author <a href="mailto:lj297@mdx.ac.uk">Lanre Jinadu</a>
@@ -19,7 +20,9 @@
 			
 		    var info;
 			
-			var streets = [];
+			//var streets = [];
+			
+			var streets ;
 			
 			var marker = [];
 			
@@ -57,6 +60,14 @@
 					        script.src = 'js/parkingMDX_GeoJSONP.js';
 					        document.getElementsByTagName('head')[0].appendChild(script);
 							
+							
+					
+
+	  						info = new google.maps.InfoWindow({
+	  								//content: "" + aStreet + " "+ aBay  
+								   content: "" //parkinContent 
+								
+	  						});
 
 							
 						
@@ -79,7 +90,7 @@
 	          for (var i = 0; i < results.features.length; i++) {
 			  
 	            var coords = results.features[i].geometry.coordinates;
-				var streets = results.features[i].properties.street;
+				streets = results.features[i].properties.street;
 				var bays = results.features[i].properties.baytype;
 				//var bays = "blah";
 				
@@ -95,7 +106,7 @@
 				 marker.setMap(map);
 				 addListenerMarker(marker , streets, bays , map );
 
-
+          
 			    
 	          }
 			  
@@ -112,28 +123,46 @@
 		  		function addListenerMarker(aMarker, aStreet , aBay , map ){
 			    
 					
-					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p><b>Restrictions:</b>" + aBay + "  " + " (last updated: 15|04|16 ) </p>" + "<p> <a href= blah+html> More Info </a> </p> "  + " <p> <a href= blah1+html> Park </a>" + "  |  " + " <a href= blah2+html> Leave </a></p>  </div> " ;
+					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p><b>Restrictions:</b>" + aBay + "  " + " (last updated: 15|04|16 ) </p>" + "<p> <a href = blah.html > More Info </a> </p> "  + " <p> <a href= Report.html  data-role= button target =_self > Park </a>" + "  |  " + " <a  href= Report.html target = _self data-role= button > Leave </a></p>  </div> " ;
 						//marker.setLabel(streets);
-						var info = new google.maps.InfoWindow({
-								//content: "" + aStreet + " "+ aBay  
-								content:  parkinContent 
-								
-						});
-					
+
+						info.setContent(parkinContent);
 					  /**
 						*  add listener
 						* @param {Marker} aMarker
 						* @param {MouseEvent} click
 						* @param {Event} 
 						*/
+						
+					
+						
 				  	  google.maps.event.addListener(aMarker, 'click', function(event) {	
+						  
 
-				
-						info.open(map, aMarker);
 						
+						  info.open(map, aMarker).bind(returnToMarker);
+						  
+
 						
+						// insert method to manage localstorage
+
 				   });
+				   
+			  	 
 				  
+				}
+				
+			
+				returnToMarker:function(){
+					
+					google.maps.event.addListener(map,'center_changed',function() {
+					// 3 seconds after the center of the map has changed, pan back to the marker
+					  window.setTimeout(function() {
+					    map.panTo(aMarker.getPosition());
+					  },3000);
+					  });
+					}
+					
 				}
 
         

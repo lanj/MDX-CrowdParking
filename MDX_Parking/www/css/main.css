@@ -5,6 +5,7 @@
 	body{
 
 		font-size: 50%; /* 8px */
+
 	}
 	
 	footer{
@@ -49,6 +50,36 @@
 
 		
 	}
+	
+	.report {
+		
+		background-color:#ccc;
+		vertical-align:bottom;
+		height: auto;
+		border-radius:2px;
+    	-moz-box-shadow: 2px 2px 4px #000;
+		-webkit-box-shadow: 2px 2px 4px #000;
+		box-shadow:2px 2px 4px #000;
+	}
+	
+	#repMenu {
+		font-family:"Arial Black" , Arial, sans-serif;
+		font weight: Strong;
+		font-size:2em;
+		margin-top:8px;
+		width:250px;
+		height:50px;
+		border-radius:9px;
+    	-moz-box-shadow: 6px 6px 4px #000;
+		-webkit-box-shadow: 6px 6px 4px #000;
+		box-shadow:6px 6px 4px #000;
+		
+	}
+	
+	
+	
+	
+	
 	 .button {
 
 	    border: none;
@@ -101,7 +132,7 @@
     nav{
 		/**background-color:#000;  **/
 		width:360px;
-		height:5%;
+		height:40px;
 
 		
 	}
@@ -114,6 +145,10 @@
 				border:2px solid #000;
 				width:360px;
 				height:auto;
+				border-radius:2px;
+		    	-moz-box-shadow: 2px 2px 4px #000;
+				-webkit-box-shadow: 2px 2px 4px #000;
+				box-shadow:2px 2px 4px #000;
 			}
 	        
 			#map {
@@ -145,17 +180,23 @@
 			}
 			
 		
+			$(#container).width(500).height(500);
+			 
+			 $(li)..width(300).height(50);
 
 		
 			$(document).ready(function(){
 				$( footer > nav > li ).addClass('menu');
 			}
 			
+			
+			
+			
 			.Floor{
 					background-color:#111;
 					border: 2px solid #000;
 					box-shadow: 1px 1px 2px #000;
-					height:auto;
+					height:40px;
 			}
 			
 
