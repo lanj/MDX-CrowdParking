@@ -51,6 +51,33 @@
 		
 	}
 	
+	
+	.support1{
+		float:left;
+		list-style:none;
+		margin-left:10%;
+	    style = color:#0000FF;
+		width:20px;
+		height:30%;
+		text-align:center;
+		border: none;
+		
+	}
+	.support2{
+		float:left;
+		list-style:none;
+		margin-right:10%;
+		margin-top:0px;
+	    style = color:#0000FF;
+		width:10%;
+		height:30%;
+		border: none;
+		z-index:2;
+		
+	}
+	
+	
+	
 	.report {
 		
 		background-color:#ccc;
@@ -158,9 +185,21 @@
 				background-color:#CCC;
 				margin:4%;
 				margin-top:10%;
+				z-index:2;
 
 
 			
+			}
+			
+			#map1 {
+				width:90%;
+				display:none;
+				height:380px;
+				border: 4px solid #000 ;
+				background-color:#CCC;
+				margin:4%;
+				margin-top:10%;
+				z-index:1;
 			}
 			
 			

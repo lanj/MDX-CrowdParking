@@ -19,15 +19,11 @@
 			var parkLatLng ;
 			
 		    var info;
-			
-			//var streets = [];
-			
+
 			var streets ;
 			
 			var marker = [];
-			
-			
-			
+	
 			/**		
 			  * initiate Map using google.maps.Map and mapOptions
     		  * @param none;
@@ -43,7 +39,7 @@
 				*@param {Div};
 				*@param { MapOption} mapOptions;
 				**/
-			  var mapOptions = {
+			       var mapOptions = {
 						zoom: 15 ,
 						center: {lat: 51.5898860, lng: -0.2269573 }, mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
@@ -69,10 +65,9 @@
 								
 	  						});
 
-							
-						
-			}
-			
+		
+		
+			    }
 			/**
 			  *  callback function, runs a loop and 
 			  *  set coordinates lat and longitude
@@ -101,16 +96,16 @@
 				  position: parkLatLng,
 				  map: map
 				
-				 })
+				 });
 				 
 				 marker.setMap(map);
-				 addListenerMarker(marker , streets, bays , map );
+				 addListenerMarker(marker, streets, bays , map );
 
-          
+                 
 			    
 	          }
 			  
-		  }
+		  };
 		  
 			    /**
 		          *   function addListener class for click event 
@@ -120,10 +115,10 @@
 		          *   @param {Map } map
 		          */
 		
-		  		function addListenerMarker(aMarker, aStreet , aBay , map ){
-			    
-					
+		  		function addListenerMarker(aMarker, aStreet , aBay , map )
+		        {
 					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p><b>Restrictions:</b>" + aBay + "  " + " (last updated: 15|04|16 ) </p>" + "<p> <a href = blah.html > More Info </a> </p> "  + " <p> <a href= Report.html  data-role= button target =_self > Park </a>" + "  |  " + " <a  href= Report.html target = _self data-role= button > Leave </a></p>  </div> " ;
+					
 						//marker.setLabel(streets);
 
 						info.setContent(parkinContent);
@@ -133,39 +128,69 @@
 						* @param {MouseEvent} click
 						* @param {Event} 
 						*/
-						
-					
-						
-				  	  google.maps.event.addListener(aMarker, 'click', function(event) {	
+
+				  google.maps.event.addListener(aMarker, 'click', function(event) {
 						  
-
-						
-						  info.open(map, aMarker).bind(returnToMarker);
-						  
-
-						
-						// insert method to manage localstorage
-
-				   });
-				   
-			  	 
-				  
-				}
-				
-			
-				returnToMarker:function(){
-					
-					google.maps.event.addListener(map,'center_changed',function() {
-					// 3 seconds after the center of the map has changed, pan back to the marker
-					  window.setTimeout(function() {
-					    map.panTo(aMarker.getPosition());
-					  },3000);
-					  });
-					}
-					
-				}
-
         
+				 
+				      /**
+				      *  to be binded to links in infowindow and to report page.
+				      */
+					  info.open(map, aMarker).on('click', usersData() function(event.data){
+					  	
+		 				 window.plugins.uniqueDeviceID.get(success, fail);
+				 
+				 
+				 		 // assign unique phonegap id to user for identification
+		 				 var getID = function success(uuid){
+					 
+		 					 console.log(uuid);
+					 
+		 				 };
+				 
+				 		 /**
+						   * pass all data to method to set
+						   *
+						   **/
+						 
+						 function usersData(getID) {
+							 
+							 
+							 var details = info.getContents();
+							 var currentMarker = marker;
+							 var currentLatLng = marker.getPosition();
+							 
+		 					 if(typeof(Storage) !== "undefined") {
 
+		 						 var personalData = [ {
+									 " ID": getID,
+		 							  "details": details,
+		 							 "marker", marker 
+								     "position", currentLatLng
+								   }]
+							 $(document).on("pagecontainerbeforeload",function(event,data){
+		 							 // store data against users ID.
+		 							 localStorage.setItem( getID(), JSON.stringify(personalData));
+							}
+						 
+		 					 } else {
+		 					     //  not supprorted statement
+		 						 return false;
+		 					 }
+					  	 }
+						
+					  }
+						  
+
+				)
+				
+}
+
+
+
+		         google.maps.event.addDomListener( window, 'load', initMap);
+				 
+				 
 		
-		google.maps.event.addDomListener(window, 'load', initMap);
+				 
+			 

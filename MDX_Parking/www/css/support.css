@@ -15,6 +15,8 @@ body{
 	padding: 0px;
 }
 
+div 
+
 a:link, a:visited, a:hover {
 	color: #006699;
 	text-decoration: none;
@@ -79,6 +81,18 @@ label{
 /***********************************************/
 /* Layout Divs                                 */
 /***********************************************/
+
+
+
+#support {
+	
+    background-image: url("img/Help_Map2.png");
+    background-color: #cccccc;
+	margin: 0;
+	width:"300px";
+	height:"200px";
+	z-index:1;
+}
 
 #masthead{
 	margin: 0;

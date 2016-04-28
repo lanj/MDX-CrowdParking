@@ -47,7 +47,7 @@
 		     
 				  
 			  var mapOptions = {
-						zoom: 19 ,
+						zoom: 12 ,
 						center: {lat: 51.5898860, lng: -0.2269573 }, mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
 					
@@ -55,24 +55,17 @@
 					  map = new google.maps.Map(document.getElementById("googleMap"),mapOptions);
 					  
 					  
-			        var script = document.createElement('script');
-					
-					/**
-					  *  get GeoJson script with parking details for location.
-					  *  
-					  */
-			        script.src = 'js/parkingMDX_GeoJSONP.js';
-			        document.getElementsByTagName('head')[0].appendChild(script);
+			       
 
 					  google.maps.event.addListener(map, 'click', function(event) {
-					    placeMarker(event.latLng);
+					    myLocation(event.latLng);
 					  });
 					}
 					
 					
 					
 
-					function currentLocation(location) {
+					function myLocation(location) {
 					  var marker = new google.maps.Marker({
 					    position: location,
 					    map: map,
@@ -80,6 +73,7 @@
 					  var infowindow = new google.maps.InfoWindow({
 						  content: ' your current location'
 					  });
+					  
 					  infowindow.open(map,marker);
 					}
 					
@@ -87,32 +81,7 @@
 					/**
 					  * get geojson data for locations.
 					  */
-			        window.eqfeed_callback = function(results) {
-			
-			          for (var i = 0; i < results.features.length; i++) {
-			  
-			            var coords = results.features[i].geometry.coordinates;
-						streets = results.features[i].properties.street;
-						var bays = results.features[i].properties.baytype;
-						//var bays = "blah";
-				
-			            parkLatLng = new google.maps.LatLng(coords[1],coords[0]);
-				
-			            var marker = new google.maps.Marker({
-
-						  position: parkLatLng,
-						  map: map
-				
-						 })
-				 
-						 marker.setMap(map);
-						 
-
-          
-			    
-			          }
-			  
-				  }
+			       
 
 					google.maps.event.addDomListener(window, 'load', initMap);
 				

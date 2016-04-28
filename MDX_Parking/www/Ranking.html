@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	   <meta charset ="utf-8"/>
+	<!-- display size and width based on mobile device width and height using viewport tag -->
+   	    <meta name="viewport" 
+	 	content="user-scalable=no, initial-scale=1, maximum-scale=1,
+		 minimum-scale=1, width=device-width, height=device-height" />
+	<!--  refer to main.css to adjust layout and styling -->
+ <link rel="stylesheet" type="text/css" href="/resources/tutorial/css/example.css">
+    
+    	<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<title> MDX Parking</title>
+	
+	<!-- call jquery library for css styling -->
+    	<script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js">
+	    </script>
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"
+				  integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+				  crossorigin="anonymous">
+		</script>
+    
+     	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js">
+		</script>
+     
+     	<script type="text/javascript" charset="utf-8" src="js/mobileparking.js">
+		</script>
+      <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  	</head>
+  
+  
+ <body>
+	 
+	 
+
+    <!-- container for mobile app -->
+	<div id="container"> 
+		<nav>
+			<!-- set up top menu   -->
+			<ul id="menu">
+				<li class="menu"><a href= "ParkingMultiMapMobile.html" target="_self"> Home  </a> </li>
+				<li class="menu"> <a href="Support.html" target="_self"> Support </a> </li>	
+				<li class="menu"><a href="Ranking.html" target="_self">Ranking</a> </li>						
+			</ul>
+	  	<nav> 
+	
+    	<section id="breadcrumb"><h2 align="center">  </h2></section>
+		</br>
+		
+  
+	<!--   call google api for maps   -->	
+	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
+	</script>
+	
+	<!--  adds the command and navigation buttons for the mobile app -->
+<div class="example-base example-leaderboard l-demo-container">
+<br>
+<br>
+  <table id="leaderboardTable">
+    <tr>
+      <th>Player</th>
+      <th>Score</th>
+    </tr>
+  </table>
+  <hr>
+  <footer>
+    <input class="example-leaderboard-name" type="text" id="nameInput" placeholder="Enter a name">
+    <input class="example-leaderboard-score" type="text" id="scoreInput" placeholder="Record your score...">
+  </footer>
+</div>
+</div>
+
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+<script>
+  var LEADERBOARD_SIZE = 5;
+
+  // Create our Firebase reference
+  var scoreListRef = new Firebase('https://parkspace.firebaseio.com/scoreList');
+
+  // Keep a mapping of firebase locations to HTML elements, so we can move / remove elements as necessary.
+  var htmlForPath = {};
+
+  // Helper function that takes a new score snapshot and adds an appropriate row to our leaderboard table.
+  function handleScoreAdded(scoreSnapshot, prevScoreName) {
+    var newScoreRow = $("<tr/>");
+    newScoreRow.append($("<td/>").append($("<em/>").text(scoreSnapshot.val().name)));
+    newScoreRow.append($("<td/>").text(scoreSnapshot.val().score));
+
+    // Store a reference to the table row so we can get it again later.
+    htmlForPath[scoreSnapshot.key()] = newScoreRow;
+
+    // Insert the new score in the appropriate place in the table.
+    if (prevScoreName === null) {
+      $("#leaderboardTable").append(newScoreRow);
+    }
+    else {
+      var lowerScoreRow = htmlForPath[prevScoreName];
+      lowerScoreRow.before(newScoreRow);
+    }
+  }
+
+  // Helper function to handle a score object being removed; just removes the corresponding table row.
+  function handleScoreRemoved(scoreSnapshot) {
+    var removedScoreRow = htmlForPath[scoreSnapshot.key()];
+    removedScoreRow.remove();
+    delete htmlForPath[scoreSnapshot.key()];
+  }
+
+  // Create a view to only receive callbacks for the last LEADERBOARD_SIZE scores
+  var scoreListView = scoreListRef.limitToLast(LEADERBOARD_SIZE);
+
+  // Add a callback to handle when a new score is added.
+  scoreListView.on('child_added', function (newScoreSnapshot, prevScoreName) {
+    handleScoreAdded(newScoreSnapshot, prevScoreName);
+  });
+
+  // Add a callback to handle when a score is removed
+  scoreListView.on('child_removed', function (oldScoreSnapshot) {
+    handleScoreRemoved(oldScoreSnapshot);
+  });
+
+  // Add a callback to handle when a score changes or moves positions.
+  var changedCallback = function (scoreSnapshot, prevScoreName) {
+    handleScoreRemoved(scoreSnapshot);
+    handleScoreAdded(scoreSnapshot, prevScoreName);
+  };
+  scoreListView.on('child_moved', changedCallback);
+  scoreListView.on('child_changed', changedCallback);
+
+  // When the user presses enter on scoreInput, add the score, and update the highest score.
+  $("#scoreInput").keypress(function (e) {
+    if (e.keyCode == 13) {
+      var newScore = Number($("#scoreInput").val());
+      var name = $("#nameInput").val();
+      $("#scoreInput").val("");
+
+      if (name.length === 0)
+        return;
+
+      var userScoreRef = scoreListRef.child(name);
+
+      // Use setWithPriority to put the name / score in Firebase, and set the priority to be the score.
+      userScoreRef.setWithPriority({ name:name, score:newScore }, newScore);
+    }
+  });
+</script>
+  </body>
+  
+</html>

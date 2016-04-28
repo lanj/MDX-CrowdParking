@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-<!--  refer to main.css to adjust layout and styling -->
-   <link rel="stylesheet" type="text/css" href="css/main.css" />
-   <link rel="stylesheet" href="support.css" type="text/css">
-<title> MDX Parking support</title>
+	<head>
+	<meta charset ="utf-8"/>
+	<!-- display size and width based on mobile device width and height using viewport tag -->
+   	 <meta name="viewport" 
+	 	content="user-scalable=no, initial-scale=1, maximum-scale=1,
+		 minimum-scale=1, width=device-width, height=device-height" />
+	<!--  refer to main.css to adjust layout and styling -->
+    	<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<title> MDX Support page </title>
+	
+	<!-- call jquery library for css styling -->
+    	<script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js">
+	    </script>
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"
+				  integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+				  crossorigin="anonymous">
+		</script>
+    
+     	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js">
+		</script>
+     
+     	<script type="text/javascript" charset="utf-8" src="js/mobileparking.js">
+		</script>
 
-<!-- call jquery library for css styling -->
-   <script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js"></script>
-   
-    <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js"></script>
-        <title>Support page</title>
-    </head>
+  	</head>
     <body>
  	<div id="container"> 
  		<nav>
@@ -23,7 +33,9 @@
 			<ul id="menu">
 				<li class="menu"><a href= "ParkingMultiMapMobile.html" target="_self"> Home  </a> </li>
 				<li class="menu"> <a href=" Support.html" target="_self"> Support </a> </li>	
-				<li class="menu"><button class="button" type="button" onClick="closeWin()"> location </button></li>				
+		<li class="menu">
+			<a href="journey.html"target="_self">Ranking</a>
+		</li>			
 			</ul>
 
  	  	<nav> 
@@ -33,10 +45,11 @@
 	    </br>
   <div class="feature"> 
 	  <hr>
-    <h2>Support Page</h2>
+    <h2>Support Page</h2>  
+ </br>
     <p> This page provides some guidance on how to use the app. You can click on any of the links below to go directly to point of interest </p>
   </div>	
-  <div class="story"><img src="" alt="" width="80" height="70">
+  <div class="story"><img src="img/Help_Map.png" alt="" width="80" height="70"><img src="img/Crowd_page.png" alt="" width="80" height="70">
     <h3>How the app works</h3>
     <p> The Mobile application uses googlemaps to access geographic features around the campus. Each parking location is identified by the red marker which is clickable </p>
 	<h3>Markers</h3>
@@ -49,20 +62,25 @@
  	</script>
 	
  	<!--  adds the command and navigation buttons for the mobile app -->
+  	<footer>
+  		<ul id="menu" class="Floor"> 
+				
+		      <li class="menuFloor shadow"><a href=#> << Back </a> </li>
+  	 		 
+
+	 		  <li class="menuFloor shadow" >
+				  <a href="schoolParkingMap.html" target= "_self"> Campus </a>                </li>
+
+	          <li class="menuFloor shadow">
+				  <a href="carparks.html" target="_self"> Off Street</a>
+			   </li>	
 	
-    <footer>
-    	<ul id="menu" class="Floor"> 
-		<form>		
-    	 <li class="menuFloor shadow"><a> Previous  </a> </li>
-		
-    	 <li class="menuFloor shadow"><button class="button" type="button" disabled>Update </button></li>	
-		<li class="menuFloor shadow"><button class="button" type="button" disabled>Report </button></li>
-		
-   		<li class="menuFloor shadow"><a> Next </a> </li>	
-		</form>			
-    </ul>
-	  
-     </footer>
+  <li class="menuFloor shadow"><a href="Support_2.html"> Next >> </a> </li>
+ 	
+			
+      </ul>
+  
+   </footer>
  </div>
     </body>
 </html>
