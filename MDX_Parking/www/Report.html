@@ -38,7 +38,7 @@
 					<li class="menu"><a href= "ParkingMultiMapMobile.html" target="_self"> Home  </a> </li>
 					<li class="menu"> <a href="Support.html" target="_self"> Support </a> </li>	
 			<li class="menu">
-				<a href="journey.html"target="_self">Ranking</a>
+				<a href="Ranking.html"target="_self">Ranking</a>
 			</li>					
 				</ul>
 
@@ -51,13 +51,31 @@
                 <li id="repMenu" class="register" onclick="register()" input type="button"> Register Parking</li>
 
                     <li id="repMenu" class="unRegister" onclick="leave()" type="button"> Leave Location </li>
-                    <li id="repMenu" class="report"><a href="Report.html"> Report Problems </a></li>
+                    <li id="repMenu" class="report"><a href="Report.html" > Report Problems </a></li>
 
 
                 </ul>
 
             </nav>
-
+   <script>
+			// if click on document and it is repMenu then get id then call userData function
+			
+			$(document).on('click', function(){
+				$('#repMenu').click(function(){
+					
+					window.plugins.uniqueDeviceID.get(success, fail);
+					
+ 					 var getID = function success(uuid){
+			 
+ 					 	console.log(uuid);
+			 
+ 					 }
+					 
+					 $('#repMenu').bind(usersData(getID));
+				})
+			}
+			
+   </script>
 
 </body>	 
 	 

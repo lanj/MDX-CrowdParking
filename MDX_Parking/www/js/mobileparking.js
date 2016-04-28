@@ -136,7 +136,7 @@
 				      /**
 				      *  to be binded to links in infowindow and to report page.
 				      */
-					  info.open(map, aMarker).on('click', usersData() function(event.data){
+					  info.open(map, aMarker).on('click', function(event ){
 					  	
 		 				 window.plugins.uniqueDeviceID.get(success, fail);
 				 
@@ -165,13 +165,13 @@
 		 						 var personalData = [ {
 									 " ID": getID,
 		 							  "details": details,
-		 							 "marker", marker 
+		 							 "marker": currentMarker,
 								     "position", currentLatLng
-								   }]
-							 $(document).on("pagecontainerbeforeload",function(event,data){
-		 							 // store data against users ID.
-		 							 localStorage.setItem( getID(), JSON.stringify(personalData));
-							}
+								 }];
+									 $(document).on("pagecontainerbeforeload",function(event , data){
+											 // store data against users ID.
+											 localStorage.setItem( getID(), JSON.stringify(personalData));
+									});
 						 
 		 					 } else {
 		 					     //  not supprorted statement
@@ -179,10 +179,10 @@
 		 					 }
 					  	 }
 						
-					  }
+					  })
 						  
 
-				)
+				})
 				
 }
 
