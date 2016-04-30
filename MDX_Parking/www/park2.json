@@ -1,0 +1,14 @@
+eqfeed_callback({
+"type": "FeatureCollection",
+"features": [
+	{"type": "Feature",
+		"geometry":{ "type": "Point", "coordinates": [-0.2299430963772583, 51.590715977565594 ]},
+	"properties": { "street": "central area" , "baytype":"nothing"}
+	}
+]
+
+
+
+
+
+

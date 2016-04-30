@@ -140,7 +140,20 @@
 						  
 
 						
-						  info.open(map, aMarker)
+					
+						
+					  	  google.maps.event.addListener(aMarker, 'click', function(event) {	
+						  
+
+						
+							  info.open(map, aMarker)
+						  
+
+						
+							// insert method to manage localstorage
+						 
+					       });
+			  	 
 						  
 
 						

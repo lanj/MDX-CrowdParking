@@ -19,15 +19,11 @@
 			var parkLatLng ;
 			
 		    var info;
-			
-			var bays;
-			
+
 			var streets ;
 			
 			var marker = [];
-			
-			
-			
+	
 			/**		
 			  * initiate Map using google.maps.Map and mapOptions
     		  * @param none;
@@ -43,7 +39,7 @@
 				*@param {Div};
 				*@param { MapOption} mapOptions;
 				**/
-			  var mapOptions = {
+			       var mapOptions = {
 						zoom: 15 ,
 						center: {lat: 51.5898860, lng: -0.2269573 }, mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
@@ -57,7 +53,7 @@
 							  *  get GeoJson script with parking details for location.
 							  *  
 							  */
-					        script.src = 'js/schoolparking.js';
+					        script.src = 'js/parkingMDX_GeoJSONP.js';
 					        document.getElementsByTagName('head')[0].appendChild(script);
 							
 							
@@ -65,14 +61,15 @@
 
 	  						info = new google.maps.InfoWindow({
 	  								//content: "" + aStreet + " "+ aBay  
-								   content: "" //parkinContent 
+								   content: "", //parkinContent 
+								//	$(this).setLabel();
+								   
 								
 	  						});
 
-							
-						
-			}
-			
+		
+		
+			    }
 			/**
 			  *  callback function, runs a loop and 
 			  *  set coordinates lat and longitude
@@ -101,16 +98,40 @@
 				  position: parkLatLng,
 				  map: map
 				
-				 })
+				 });
 				 
 				 marker.setMap(map);
-				 addListenerMarker(marker , streets, bays , map );
+				 addListenerMarker(marker, streets, bays , map );
+				 
+				 
+				 // updated 
+				
+				
+			      map.data.addListener('dblclick', function(event) {
+				   //event.feature.setProperty('isColorful', true);
+				   alert("go");
+				   
+				 });
+				 
+				 
+				// map.data.setStyle(function(feature) {
+			//	   var color = 'gray';
+			//	   if (feature.getProperty('isColorful')) {
+			//	     color = feature.getProperty('color');
+			//	   }
+			//	   return /** @type {google.maps.Data.StyleOptions} */({
+					 //  map.data.setStyle({
+			//		     icon: 'img/map-pin-22,png',
+					  //   fillColor: 'green'
+			//		   })
+			//	   });
+			//	 });
 
-          
+                 
 			    
 	          }
 			  
-		  }
+		  };
 		  
 			    /**
 		          *   function addListener class for click event 
@@ -120,10 +141,10 @@
 		          *   @param {Map } map
 		          */
 		
-		  		function addListenerMarker(aMarker, aStreet , aBay , map ){
-			    
-					
+		  		function addListenerMarker(aMarker, aStreet , aBay , map )
+		        {
 					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p><b>Restrictions:</b>" + aBay + "  " + " (last updated: 15|04|16 ) </p>" + "<p> <a href = blah.html > More Info </a> </p> "  + " <p> <a href= Report.html  data-role= button target =_self > Park </a>" + "  |  " + " <a  href= Report.html target = _self data-role= button > Leave </a></p>  </div> " ;
+					
 						//marker.setLabel(streets);
 
 						info.setContent(parkinContent);
@@ -133,31 +154,61 @@
 						* @param {MouseEvent} click
 						* @param {Event} 
 						*/
-						
-					
-						
-				  	  google.maps.event.addListener(aMarker, 'click', function(event) {	
+
+				  	  google.maps.event.addListener(aMarker, 'click', function(event) {
 						  
+        
+				 
+				      /**
+				      *  to be binded to links in infowindow and to report page.
+				      */
+					  info.open(map, aMarker).on('click', function(event ){
+					  	
 
-						
-					  	  google.maps.event.addListener(aMarker, 'click', function(event) {	
-
-						
-							  info.open(map, aMarker)
-		
-					       });
-						  
-
-						
-						// insert method to manage localstorage
+				 
+				 
+				 		 /**
+						   * pass all data to method to set
+						   *
+						   **/
 						 
-				       });
-			  	 
-				  
+						 function usersData() {
+							 
+							 
+							 var details = info.getContents();
+							 var currentMarker = marker;
+							 var currentLatLng = marker.getPosition();
+							 
+		 					 if(typeof(Storage) !== "undefined") {
+
+		 						 var personalData = [ {
+		 							  "details": details,
+		 							 "marker": currentMarker,
+								     "position": currentLatLng
+								 }];
+									 $(document).on("pagecontainerbeforeload",function(event , data){
+											 // store data against users ID.
+											 localStorage.setItem( getID(), JSON.stringify(personalData));
+									});
+						 
+		 					 } else {
+		 					     //  not supprorted statement
+		 						 return false;
+		 					 }
+					  	 }
+						
+					  })
+						  
+
+				})
 				
-				
+}
 
 
-			}
+
+		         google.maps.event.addDomListener( window, 'load', initMap);
+				 
+				 
 		
-		google.maps.event.addDomListener(window, 'load', initMap);
+				 
+			 

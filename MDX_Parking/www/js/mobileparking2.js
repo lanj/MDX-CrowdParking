@@ -63,12 +63,6 @@
 							
 					
 
-	  						info = new google.maps.InfoWindow({
-	  								//content: "" + aStreet + " "+ aBay  
-								   content: "" //parkinContent 
-								
-	  						});
-
 							
 						
 			}
@@ -91,7 +85,7 @@
 			  
 	            var coords = results.features[i].geometry.coordinates;
 				streets = results.features[i].properties.street;
-				var bays = results.features[i].properties.baytype;
+				bays = results.features[i].properties.baytype;
 				//var bays = "blah";
 				
 	            parkLatLng = new google.maps.LatLng(coords[1],coords[0]);
@@ -121,6 +115,17 @@
 		          */
 		
 		  		function addListenerMarker(aMarker, aStreet , aBay , map ){
+					
+					
+					
+
+					info = new google.maps.InfoWindow({
+							//content: "" + aStreet + " "+ aBay  
+						   content: "" //parkinContent 
+						
+					});
+					
+					
 			    
 					
 					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p><b>Restrictions:</b>" + aBay + "  " + " (last updated: 15|04|16 ) </p>" + "<p> <a href = blah.html > More Info </a> </p> "  + " <p> <a href= Report.html  data-role= button target =_self > Park </a>" + "  |  " + " <a  href= Report.html target = _self data-role= button > Leave </a></p>  </div> " ;
@@ -140,13 +145,30 @@
 						  
 
 						
-						  info.open(map, aMarker)
+				 
+	  					google.maps.event.addListener(aMarker, 'click', function(event) {
+				 
+				
+	  					/**
+	  					  *  launch infoWindow 
+	  					  */
+	  					 	info.open(map, aMarker);
+
+					
+				 
+	  					})
 						  
 
 						
 						// insert method to manage localstorage
 
 				   });
+				   
+				   
+				   
+				 
+
+			 
 				   
 			  	 
 				  

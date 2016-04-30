@@ -146,10 +146,8 @@
 	 					google.maps.event.addListener(aMarker, 'click', function(event) {
 						 
 	 				
-							/**
-							  *  launch infoWindow 
-							  */
-							 info.open(map, aMarker);
+							
+
 
 							
 						 
@@ -170,20 +168,16 @@
 
 	 			              //  feature.getProperty("Street");
 						 
-					          /**
-							    *
-							    *
+					    
 	 						  info.open(map, aMarker).click(function(event){
 	 							  $('#park').on(setoffMarkers(aMarker));
 	 							  $('#leave').on(setofMarkers(aMarker));
 								  $('#report').on(setofMarkers(aMarker))
 	 						  });
-							  
-							  **/
 						
 	 							//$('#leave').on(setoffMarkers(aMarker));
 						
-						    
+						
 
 	 		       })
 						
@@ -212,39 +206,18 @@
 					// var res = str.split(" ");
 					
 			//		infodata[2] = map.data.features.Data.Features.getProperty().val;
-                   
+                    
+					//alert(Data.Feature.getProperty(street));
+				   // this.setlabel('X');
 					
-					//alert ( " hello" + infodata[0] + infodata[1]  + " street:" + s +  "<b> " + b + "</b>" );
+					alert ( " hello" + infodata[0] + infodata[1]  + " street:" + s +  "<b> " + b + "</b>" );
 
 					// here I would update the records by calling some function to find the data based on
 					// input infodata , then I will addtogeojson file.
 					// finally i will call back the file with new updated data using 
 					// map.data.loadGeoJson('url');
-					
-					var data = [{ mark:aMarker , streets: s , coordinates : infodata[0] , 
-						baytype: b  , Accessibility: null }];
-						
-						
 	
 				 }
-				 
-				 function usersData(data) {
-
-					 
- 					 if(typeof(Storage) !== "undefined") {
-
- 
-							 $(document).on("pagecontainerbeforeload",function(event , data){
-									 // store data against users ID.
-									 localStorage.setItem( getID(), JSON.stringify(data));
-							});
-				 
- 					 } else {
- 					     //  not supprorted statement
- 						 return false;
- 					 }
-			  	 }
-				
 				   
 				   
 		
