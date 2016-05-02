@@ -1,0 +1,9 @@
+{
+  "firebase": "parkspace",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

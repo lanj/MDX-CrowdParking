@@ -27,6 +27,8 @@
 			var marker = [];
 			
 			var address = [];
+			
+			var isClick;
 	
 			var parked = false;
 			/**		
@@ -61,11 +63,7 @@
 					        script.src = 'js/parkingMDX_GeoJSONP.js';
 					        document.getElementsByTagName('head')[0].appendChild(script);
 							
-							
-					
 
-	  						
-		
 		
 			    }
 			/**
@@ -102,8 +100,6 @@
 				 addListenerMarker(marker, streets, bays , map );
 				 //addListenerDetails(marker,street, bays , map);
 
-                 
-			    
 	          }
 			  
 		  };
@@ -118,7 +114,11 @@
 		
 		  		function addListenerMarker(aMarker, aStreet , aBay , map )
 		        {
-					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + " (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = # > Report issues</a> </p> "  + " <p  id=park align=center> <a href= #  data-role= button target =_self > Park </a></p>" + "  <p  id=leave align=center><a href=# target = _self data-role= button > Leave </a></p>  </div> " ;
+					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + 
+					" (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = #  onclick=toReport()> Report issues</a> </p> "  + 
+					" <p  id=park align=center> <a href= #  target =_self onclick=toAccess() id = park > Park </a></p>" + 
+					" <p  id=leave align=center><a href=# target = _self onclick=notAccess() > Leave </a></p>  </div> " ;
+					
 					
 						//marker.setLabel(streets);
 						var info = new google.maps.InfoWindow({
@@ -128,141 +128,129 @@
 
 							
 						})
-						
-						
+					
+					
+					
+	 					google.maps.event.addListener(aMarker, 'dblclick', function(event) {
+						 
+
+							 info.open(map, aMarker);
+							 
+  
+	 					})
+
+					 
 
    	   			     google.maps.event.addListener(aMarker, 'click', function( event) {
 
-	                
+      
+
+						
+						
+						
+  	   	 		     toAccess = function()
+		              {
+						  
+
+					       aMarker.setLabel('x');
+						   
+						   
+						   
+					       $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
+		 
+						   
+  	   					   alert("Parking taken");
+  	   					   console.log('called');
+						  
+						   return true;
+  	   	 		       } 
+					   
+						
+						
+   	   	 		     notAccess = function()
+ 		              {
+					   
+						   aMarker.setLabel('');
+ 					       $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
+						   
+   	   					   alert("parking freed");
+   	   					   console.log('called');
+						  
+						   return true;
+   	   	 		       } 
+						
+						
+						
 					
-						//$(this).on(setDetails( aMarker, aStreet , aBay ));
-   						 // store data collected
-   	   					 $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
-						 
-						 
-
-						 
-						 
-	 					google.maps.event.addListener(aMarker, 'click', function(event) {
-						 
-	 				
-							/**
-							  *  launch infoWindow 
-							  */
-							 info.open(map, aMarker);
-
+   	   	 		     toReport = function()
+  	                 {
+				   
+  				            aMarker.setLabel('u');
 							
-						 
-	 					})
-					 
-
+  					  	     $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
+   	   					   alert("Parking problems");
+   	   					   console.log('called');
+						   
+					     
+					   
+						   return true;
+   	   	 		      } 
+						
+					
 
    	   			     })
-						
+
+
 					
-   
-		
-
-								
-		   
-	 		       google.maps.event.addListener(aMarker, 'click', function(event) {
 
 
-	 			              //  feature.getProperty("Street");
-						 
-					          /**
-							    *
-							    *
-	 						  info.open(map, aMarker).click(function(event){
-	 							  $('#park').on(setoffMarkers(aMarker));
-	 							  $('#leave').on(setofMarkers(aMarker));
-								  $('#report').on(setofMarkers(aMarker))
-	 						  });
-							  
-							  **/
-						
-	 							//$('#leave').on(setoffMarkers(aMarker));
-						
-						    
-
-	 		       })
-						
-					  /**
-						*  add listener
-						* @param {Marker} aMarker
-						* @param {MouseEvent} click
-						* @param {Event} 
-						*/
-
-
-				   
-			 	 
-
-				 
-				 
-				 // get all the info values from infowindow.
-				 function setoffMarkers(aMarker , aStreet , aBay, map ){
-					 var available = 'false';
-					// mark.setLabel('X');
-					var infodata = [];
-					infodata[0] = aMarker.getPosition();
-					infodata[1] = info.getContent();
-					var b = aBay;
-					var s = aStreet;
-					// var res = str.split(" ");
-					
-			//		infodata[2] = map.data.features.Data.Features.getProperty().val;
-                   
-					
-					//alert ( " hello" + infodata[0] + infodata[1]  + " street:" + s +  "<b> " + b + "</b>" );
-
-					// here I would update the records by calling some function to find the data based on
-					// input infodata , then I will addtogeojson file.
-					// finally i will call back the file with new updated data using 
-					// map.data.loadGeoJson('url');
-					
-					var data = [{ mark:aMarker , streets: s , coordinates : infodata[0] , 
-						baytype: b  , Accessibility: null }];
-						
-						
+				 function setoffMarkers(aMarker , aStreet , aBay, map ) {
+						  var available = 'false';
+						  // mark.setLabel('X');
+						  var infodata = [];
+						  infodata[0] = aMarker.getPosition();
+						  infodata[1] = info.getContent();
+						  var b = aBay;
+						  var s = aStreet;
 	
-				 }
-				 
+
+						  var geodata = [{ type:"Point", "coordinates": [infodata[0].lat(),infodata[0].lng()]}];
+						  var geodata = [{street: aStreet, bay: b, }];
+						  
+						  
+						  $.getJSON( "js/park.json", function( data ) {
+					  
+						  
+						  alert("" + data[1].report);
+							
+							
+						 
+
+					  }
+
+
 				 function usersData(data) {
 
-					 
- 					 if(typeof(Storage) !== "undefined") {
 
- 
-							 $(document).on("pagecontainerbeforeload",function(event , data){
-									 // store data against users ID.
-									 localStorage.setItem( getID(), JSON.stringify(data));
-							});
-				 
- 					 } else {
- 					     //  not supprorted statement
- 						 return false;
- 					 }
-			  	 }
-				
-				   
-				   
-		
+							  if (typeof(Storage) !== "undefined") {
 
-				   // Set the fill color to red when the feature is clicked.
-				   // Stroke weight remains 3.
-                   
-				   
-				   
-				   
-				
-               }
-			   
+								  $(document).on("pagecontainerbeforeload", function (event, data) {
+									  // store data against users ID.
+									  localStorage.setItem(JSON.stringify(geodata));
+
+								  });
+
+							  } else {
+
+								  return false;
+							  }
+
+						  }
 
 
 
-
-		         google.maps.event.addDomListener( window, 'load', initMap);
+					  }
+					  google.maps.event.addDomListener( window, 'load', initMap);
 				 
 				 
 		

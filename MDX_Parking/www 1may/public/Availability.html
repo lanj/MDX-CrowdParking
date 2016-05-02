@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset ="utf-8"/>
+	<!-- display size and width based on mobile device width and height using viewport tag -->
+   	 <meta name="viewport" 
+	 	content="user-scalable=no, initial-scale=1, maximum-scale=1,
+		 minimum-scale=1, width=device-width, height=device-height" />
+	<!--  refer to main.css to adjust layout and styling -->
+    	<link rel="stylesheet" type="text/css" href="css/main.css" />
+		
+		<title> MDX Parking</title>
+	
+	<!-- call jquery library for css styling -->
+    	<script type="text/javascript" src="js/jquery-1.7.1/jquery.min.js">
+	    </script>
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"
+				  integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+				  crossorigin="anonymous">
+		</script>
+    
+     	<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js">
+		</script>
+     
+     	<script type="text/javascript" charset="utf-8" src="js/mobileparking.js">
+		</script>
+		
+	    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	  	</head>
+
+  	</head>
+<body>
+<!--<div data-role="page">	 -->
+		<div data-role="header">
+		<h1></h1>
+		</div>
+			
+		<div data-role="content" id ="container">
+			<nav>
+				<!-- set up top menu   -->
+				<ul id="menu">
+					<li class="menu"><a href= "ParkingMultiMapMobile.html" target="_self"> Home  </a> </li>
+					<li class="menu"> <a href="Support.html" target="_self"> Support </a> </li>	
+			<li class="menu">
+				<a href="journey.html"target="_self">Ranking</a>
+			</li>					
+				</ul>
+
+		</div> 
+	</hr>
+	  	<nav> 
+<body>
+
+  
+<div id="outer">
+<div id="form">
+
+
+<form id="AvailForm" onsubmit="connect_online" method="post">
+   <br>
+   <hr>
+   
+   <strong>Parking availabliltiy</strong>
+   <hr>
+   
+   <p> Enter Name: <input type="nameInput" name="text1" autofocus /> </p>
+   <p> Enter location: <input type="streetInput" name="street" /> </p>
+   
+   <hr>
+    <p> <label for="starting" >Confirm you will be parking:  </label>
+		<input type="radio" name="check" id="starting" ></p>
+		
+<p>	<label for="leaving"> Confirm you will be leaving:</label>
+ <input type="radio" name="check" id="leaving" checked></p>
+ 
+ <p> <label for="out_of_service">
+Facility out of service:</label> 
+ <input type="radio" name="check" id="out_of_service" ></p>
+ 
+ <hr>
+    <Parking type> Check one option:
+    <p> On street: <input type="radio" name="radio" /> &nbsp;
+        Car Park: <input type="radio" name="radio" checked /> &nbsp;
+        Campus: <input type="radio" name="radio" /> 
+    </p>
+<hr>
+    <p> <input type="submit" name="submit1"  onclick="return display()" /> </p>
+</form>
+
+</div> <!-- form -->
+
+</div> <!-- outer -->
+<script>
+ 
+	
+</script>
+</body>
+</html>

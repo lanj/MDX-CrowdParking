@@ -1,0 +1,11 @@
+{ "street": “church_end1", "available" : “no"
+  ” ,
+  "restriction" : “street_parking"
+, "bayno": “0“,
+  "report" :
+  { "id" : “1”,
+    "comment": "some_comment”,
+    postId : “1”,
+    name : “Lanre”
+  }
+}
