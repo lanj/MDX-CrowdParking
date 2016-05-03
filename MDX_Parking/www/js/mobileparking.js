@@ -26,11 +26,16 @@
 			
 			var marker = [];
 			
+			var markerX;
+			
 			var address = [];
 			
 			var isClick;
 	
-			var parked = false;
+			var isAccessible = true;
+			
+			var markerTemp = [];
+			
 			/**		
 			  * initiate Map using google.maps.Map and mapOptions
     		  * @param none;
@@ -60,7 +65,7 @@
 							  *  get GeoJson script with parking details for location.
 							  *  
 							  */
-					        script.src = 'js/parkingMDX_GeoJSONP.js';
+					        script.src = 'js/parkMDX.js';
 					        document.getElementsByTagName('head')[0].appendChild(script);
 							
 
@@ -114,69 +119,123 @@
 		
 		  		function addListenerMarker(aMarker, aStreet , aBay , map )
 		        {
-					var parkinContent = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + 
-					" (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = #  onclick=toReport()> Report issues</a> </p> "  + 
-					" <p  id=park align=center> <a href= #  target =_self onclick=toAccess() id = park > Park </a></p>" + 
-					" <p  id=leave align=center><a href=# target = _self onclick=notAccess() > Leave </a></p>  </div> " ;
 					
+					var parkinContent = [];
+					var parkinDetails;
+					
+					parkinContent[0] = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + 
+					" (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = #  onclick=toReport()> Report issues</a> </p> "  + 
+					" <p  id=park align=center> <a href= #  target =_self onClick=toAccess() id = park > Park </a></p>" + 
+					" <p  id=leave align=center><a href=# target = _self onClick= notAccess() > Leave </a></p>  </div> " ;
+					
+					parkinContent[1] = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + 
+					" (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = #  onclick=toReport()> Report issues</a> </p> "  + 
+					" <p  id=park align=center> </p>" + 
+					" <p  id=leave align=center><a href=# target = _self onClick= notAccess() > Leave </a></p>  </div> " ;
+					
+				
+	
+					if(isAccessible === true){
+						
+				        info = new google.maps.InfoWindow({
+
+							content: parkinContent[0]
+					    });
+					}else{
+						parkDetails = parkingContent[1];
+				        info = new google.maps.InfoWindow({
+
+						 content: parkingContent[1]
+
+					   });
+					}
+
 					
 						//marker.setLabel(streets);
-						var info = new google.maps.InfoWindow({
-														//content: "" + aStreet + " "+ aBay  
-							content: parkinContent 
-							
-
-							
-						})
+					     
+						
+						
 					
 					
 					
-	 					google.maps.event.addListener(aMarker, 'dblclick', function(event) {
+	 				google.maps.event.addListener(aMarker, 'dblclick', function(event) {
 						 
-
-							 info.open(map, aMarker);
+							info.open(map, aMarker);
+							
 							 
   
-	 					})
+	 				})
 
 					 
 
    	   			     google.maps.event.addListener(aMarker, 'click', function( event) {
+						 
+						
 
-      
+ 
+						 
+						
+						 
 
 						
 						
-						
-  	   	 		     toAccess = function()
+  	   	 		     toAccess = function(event)
 		              {
 						  
 
-					       aMarker.setLabel('x');
-						   
-						   
+				  if(isAccessible === true){
+							  
+						       aMarker.setLabel('x');
+							   
+					           info.close();
+							   
+					//		   markerX = aMarker;
+							   
+					//		   markersTemp = marker;
+							  
+							
+	
 						   
 					       $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
-		 
-						   
-  	   					   alert("Parking taken");
+	 
+	                       
+					       
+  	   					   alert("Parking taken"  );
   	   					   console.log('called');
+
+						   
+						    isAccessible = false;
+					  } 
+
+						   
+	
 						  
-						   return true;
+			
   	   	 		       } 
 					   
+					   
+					   
+					  
+				
 						
 						
    	   	 		     notAccess = function()
  		              {
 					   
-						   aMarker.setLabel('');
- 					       $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
+
+						    if((isAccessible == false) && (aMarker.getLabel() === 'x')){
+						
+						       aMarker.setLabel('');
 						   
-   	   					   alert("parking freed");
-   	   					   console.log('called');
-						  
-						   return true;
+ 					           $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
+	
+   	   					       alert("parking freed ");
+
+					      info.close();
+					      isAccessible = true;
+						   
+						   
+					     } 
    	   	 		       } 
 						
 						
@@ -184,6 +243,10 @@
 					
    	   	 		     toReport = function()
   	                 {
+				   
+					  
+
+				   
 				   
   				            aMarker.setLabel('u');
 							
@@ -196,9 +259,8 @@
 						   return true;
    	   	 		      } 
 						
-					
-
-   	   			     })
+				
+   	   			     } ) 
 
 
 					
@@ -206,7 +268,7 @@
 
 				 function setoffMarkers(aMarker , aStreet , aBay, map ) {
 						  var available = 'false';
-						  // mark.setLabel('X');
+						//  aMarker.setLabel('X');
 						  var infodata = [];
 						  infodata[0] = aMarker.getPosition();
 						  infodata[1] = info.getContent();
@@ -218,18 +280,12 @@
 						  var geodata = [{street: aStreet, bay: b, }];
 						  
 						  
-						  $.getJSON( "js/park.json", function( data ) {
-					  
-						  
-						  alert("" + data[1].report);
-							
-							
 						 
-
+						 
 					  }
 
 
-				 function usersData(data) {
+				 	 function usersData(data) {
 
 
 							  if (typeof(Storage) !== "undefined") {
@@ -245,9 +301,8 @@
 								  return false;
 							  }
 
-						  }
-
-
+					 }
+					
 
 					  }
 					  google.maps.event.addDomListener( window, 'load', initMap);
