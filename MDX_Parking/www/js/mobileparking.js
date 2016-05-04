@@ -8,17 +8,28 @@
 	        /**
 	          * declare global variables for taking map, LatLng , infoWindow , array of Street and  array of Marker
  			  * @class parkingMDX_GeoJSON
-			  * @param {Map}
+			  * @param {Map} map
               * @param {LatLng} parkLatLng
               * @param {InfoWindow} info
-              * @param {Marker []} marker
-	          */
+              * @param {Marker | Array} marker
+              * @param {address| Array}
+              * @param {Marker} markerX
+              * @param {yname} 
+			  * @param {isAccessble | boolean} 
+			  * @return none;
+ 	          */
 
 			var map ;
 			
 			var parkLatLng ;
 			
 		    var info;
+			
+			var isClick;
+			
+			var markerX;
+			
+			var scoreCount = 0;
 
 			var streets = [];
 			
@@ -26,47 +37,42 @@
 			
 			var marker = [];
 			
-			var markerX;
-			
 			var address = [];
 			
-			var isClick;
+			var yname ;
+			
 	
 			var isAccessible = true;
 			
 			var markerTemp = [];
 			
 			/**		
+			  *
 			  * initiate Map using google.maps.Map and mapOptions
-    		  * @param none;
+			  *apply maptype and setup map coordinates 
+			  *@constructor map;
+			  *@param {Div};
+			  *@param { MapOption} mapOptions;
+    		  *@param none;
 			  **/
 			
 		  	  function initMap() {
 				
-				
-			  /***
-				*
-				*apply maptype and setup map coordinates 
-				*@constructor map;
-				*@param {Div};
-				*@param { MapOption} mapOptions;
-				**/
+					// @ google.maps.Map.mapoptions set zoom and coordianate settings.
 			       var mapOptions = {
 						zoom: 15 ,
 						center: {lat: 51.5898860, lng: -0.2269573 }, mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
 					
+					// initiate map 
 			  	  	map = new google.maps.Map(document.getElementById('map'), mapOptions);
 				
 
-					        var script = document.createElement('script');
-							
-							/**
-							  *  get GeoJson script with parking details for location.
-							  *  
-							  */
-					        script.src = 'js/parkMDX.js';
-					        document.getElementsByTagName('head')[0].appendChild(script);
+                    // assign jsonp object to script 
+					var script = document.createElement('script');
+
+					script.src = 'js/parkMDX.js';
+				    document.getElementsByTagName('head')[0].appendChild(script);
 							
 
 		
@@ -76,15 +82,16 @@
 			  *  set coordinates lat and longitude
 			  *  to each marker 
 			  *  @constructor eqfeed_callback
-			  *  use {@link maps#LatLng} to set the  marker coordinates 
-              *  use {@link maps.Marker} to create marker for each coordinate
-			  *  use {@link marker.setMap} to set marker 
+			  *  {@link maps#LatLng} to set the  marker coordinates 
+              *  {@link maps.Marker} to create marker for each coordinate
+			  *  {@link marker.setMap} to set marker 
 			  *  @param {Array}results returned results from GEOJSON class
 			  *
 			  */
 			
 	        window.eqfeed_callback = function(results) {
 			
+			  // loop through array of results and assign to global variables
 	          for (var i = 0; i < results.features.length; i++) {
 			  
 	            var coords = results.features[i].geometry.coordinates;
@@ -94,6 +101,7 @@
 				
 	            parkLatLng = new google.maps.LatLng(coords[1],coords[0]);
 				
+				// for each loop create marker with the assigned variables as properties
 	            var marker = new google.maps.Marker({
 
 				  position: parkLatLng,
@@ -103,15 +111,15 @@
 				 
 				 marker.setMap(map);
 				 addListenerMarker(marker, streets, bays , map );
-				 //addListenerDetails(marker,street, bays , map);
-
+	
 	          }
 			  
 		  };
 		  
 			    /**
-		          *   function addListener class for click event 
-		   		  *   and calls the InfoWindow function to get parking details
+		          *   name: addListener
+		          *   Description: function addListener class for click event to initiate info object
+		   		  *   which creates InfoWindow object with content about parking.
 		          *   @param {Marker}aMarker
 		          *   @param {Street} aSTreet
 		          *   @param {Map } map
@@ -122,6 +130,7 @@
 					
 					var parkinContent = [];
 					var parkinDetails;
+					
 					
 					parkinContent[0] = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + 
 					" (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = #  onclick=toReport()> Report issues</a> </p> "  + 
@@ -135,6 +144,7 @@
 					
 				
 	
+					// assign content with all links if flag is set true otherwise assign only report
 					if(isAccessible === true){
 						
 				        info = new google.maps.InfoWindow({
@@ -150,14 +160,20 @@
 					   });
 					}
 
-					
-						//marker.setLabel(streets);
-					     
-						
-						
-					
-					
-					
+	
+	
+	
+					/**
+					  * name: addListener
+					  * 
+					  * Description: listens for doubleclick on Marker 
+					  * calls open function of the infowindow class.
+					  *@param {Marker }
+					  *@param {Event  } dblclick
+					  *@param {callback}
+					  *@return: none
+					  **/
+	
 	 				google.maps.event.addListener(aMarker, 'dblclick', function(event) {
 						 
 							info.open(map, aMarker);
@@ -166,45 +182,48 @@
   
 	 				})
 
-					 
-
+					 /**
+					  * name: addListener
+					  * 
+					  * Description: listens for click on links Park, Leave and Report
+					  * as document level events in InfoWindow googlemap class.
+					  *@param {Marker }
+					  *@param {Event  } click
+					  *@param {callback}
+					  *@return: none
+					  **/
+                    
    	   			     google.maps.event.addListener(aMarker, 'click', function( event) {
 						 
-						
-
- 
-						 
-						
-						 
 
 						
-						
-  	   	 		     toAccess = function(event)
+					/**
+					  * name: toAccess
+					  * @constructor
+					  * Description: registers when user is parking at a location 
+					  * label is set to X to identify locations reported as occupied.
+					  * 
+					  *@return : none
+					  **/
+  	   	 		     toAccess = function()
 		              {
 						  
-
-				  if(isAccessible === true){
+						   
+                      // set up precondition to set label only when there isAccessbile flag is true.
+				     if(isAccessible === true){
 							  
-						       aMarker.setLabel('x');
+						   aMarker.setLabel('x');
 							   
-					           info.close();
-							   
-					//		   markerX = aMarker;
-							   
-					//		   markersTemp = marker;
+					       info.close();
 							  
-							
-	
 						   
 					       $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
 	 
-	                       
-					       
-  	   					   alert("Parking taken"  );
-  	   					   console.log('called');
+							// test if parking is allocated
+  	   					   alert("Parking taken");
+  	   					   
 
-						   
-						    isAccessible = false;
+						   isAccessible = false;
 					  } 
 
 						   
@@ -215,14 +234,21 @@
 					   
 					   
 					   
-					  
-				
+					/**
+					  * name: notAccess
+					  * @constructor
+					  * Description: registers when user has left location
+					  * label is unset from X to to default value 
+					  * 
+					  *@return : none
+					  **/
 						
 						
    	   	 		     notAccess = function()
  		              {
 					   
-
+                             // precondition to check flag has been set false by access function and the marker 
+                             // being reset is one labelled X
 						    if((isAccessible == false) && (aMarker.getLabel() === 'x')){
 						
 						       aMarker.setLabel('');
@@ -231,60 +257,94 @@
 	
    	   					       alert("parking freed ");
 
-					      info.close();
-					      isAccessible = true;
+					     	   info.close();
+							  
+					     	   isAccessible = true;
 						   
 						   
 					     } 
    	   	 		       } 
 						
 						
-						
+					/**
+					  * name: toReport
+					  * @constructor
+					  * Description: registers when user is making a report 
+					  * label is set to U to identify locations reported with issues
+					  * 
+					  *@return boolean
+					  **/
 					
    	   	 		     toReport = function()
   	                 {
 				   
-					  
+					     // precondition to check that none of the markers chosen has labelled X.
 
-				   
+						 if(!(aMarker.getLabel() === 'x')){
 				   
   				            aMarker.setLabel('u');
 							
-  					  	     $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
+  					  	   $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
    	   					   alert("Parking problems");
-   	   					   console.log('called');
-						   
-					     
-					   
+
+
 						   return true;
    	   	 		      } 
+				  }
 						
 				
    	   			     } ) 
 
-
+                 
+				 
+				 /**
+				   * Description setofMarkers converts values to JSON to be passed on to server.
+				   * name: setoffMarkers
+				   * 
+				   *@param {Marker }aMarker
+				   *@param {Street} aStreet
+				   *@param {Bay} aBay
+				   *@param {Map} map
+				   *
+				   *
+				   **/
 					
 
-
 				 function setoffMarkers(aMarker , aStreet , aBay, map ) {
+					 
+					 
+					 
+					 	  // initating local variables 
 						  var available = 'false';
-						//  aMarker.setLabel('X');
 						  var infodata = [];
-						  infodata[0] = aMarker.getPosition();
-						  infodata[1] = info.getContent();
 						  var b = aBay;
 						  var s = aStreet;
-	
-
+						  
+						  // assign lng and lat taken from marker 
+						  var long = aMarker.getPosition().lng();
+						  var lat = aMarker.getPosition().lat();
+						  
+						  // create geodata objects using the acquired properties taken from marker
 						  var geodata = [{ type:"Point", "coordinates": [infodata[0].lat(),infodata[0].lng()]}];
 						  var geodata = [{street: aStreet, bay: b, }];
+						  var georank = [{ name:"  " , "scores": scoreCount}]	
 						  
+						  //create reference to firebase remote database				  
+	 					  var scoreListRef = new Firebase('https://parkspace.firebaseio.com/scoreList');
+						 
+						  infodata[0] = aMarker.getPosition();
+						  infodata[1] = info.getContent();
 						  
-						 
-						 
+						  //increment the global variable scoreCount to keep score of number of reports/actions by participant.
+						  scoreCount += 1;
+						  // push score to score list database in firebase.
+						  scoreListRef.push({ name: 'test1', score: scoreCount});
+						  
+					
 					  }
 
 
+					 
 				 	 function usersData(data) {
 
 
@@ -302,12 +362,13 @@
 							  }
 
 					 }
-					
+					 
 
 					  }
+					  
 					  google.maps.event.addDomListener( window, 'load', initMap);
 				 
 				 
-		
+		      
 				 
 			 

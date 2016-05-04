@@ -2,7 +2,7 @@
 /**
  * @fileOverview implement google map for parking
  * @author <a href="mailto:lj297@mdx.ac.uk">Lanre Jinadu</a>
- * @version 0.4
+ * @version 1.4
  */
 	
 	        /**
@@ -11,7 +11,7 @@
 			  * @param {Map}
               * @param {LatLng} parkLatLng
               * @param {InfoWindow} info
-              * @param {Marker []} marker
+              * @param {Marker | array} marker
 	          */
 
 			var map ;

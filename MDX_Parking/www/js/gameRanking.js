@@ -1,8 +1,19 @@
+/**
+  * name:gameRanking 
+  * description, lists users in descending order based on rankings taken from firebase
+  * database. We acknowledge use of sample code provided by firebase website. 
+  * https://nzp15bov7ge.firebaseio-demo.com/
+  *
+  *
+  **/
+
+
 
 function gameRanking(){
 
 
   var LEADERBOARD_SIZE = 5;
+  var scoreCount ;
 
   // Create our Firebase reference
   var scoreListRef = new Firebase('https://parkspace.firebaseio.com/scoreList');
