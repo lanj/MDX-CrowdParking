@@ -11,9 +11,9 @@
 	
 	footer{
 		
-		background-color:#00F;
+		background-color:#000;
 		vertical-align:bottom;
-		height:40px;
+		height:85px;
 	}
 	
 	
@@ -124,14 +124,15 @@
 		float:left;
 		list-style:none;
 	    style = color:#ffffff;
-		width:20%;
-		height:50%;
+		width:15%;
+		height:30%;
 		margin-left:1%;
 		margin-right:2%;
-		margin-top:4%;
+		margin-top:5px;
 		margin-bottom:5%;
+		padding-bottom:5px;
 		text-align:center;
-		border-radius:5px;
+		border-radius:65px;
 		
 		
 	}
@@ -175,7 +176,7 @@
 				background-color:#fff;
 				border:1px solid #000;
 				width:360px;
-				height:570px;
+				height:580px;
 				border-radius:2px;
 		    	-moz-box-shadow: 2px 2px 4px #000;
 				-webkit-box-shadow: 2px 2px 4px #000;
@@ -240,7 +241,8 @@
 					background-color:#111;
 					border: 2px solid #000;
 					box-shadow: 1px 1px 2px #000;
-					height:40px;
+					height:50px;
+					padding-bottom:5px;
 			}
 			
 
