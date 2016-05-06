@@ -323,6 +323,10 @@
 						  // assign lng and lat taken from marker 
 						  var long = aMarker.getPosition().lng();
 						  var lat = aMarker.getPosition().lat();
+						 
+						  infodata[0] = aMarker.getPosition();
+						  infodata[1] = info.getContent();
+						  
 						  
 						  // create geodata objects using the acquired properties taken from marker
 						  var geodata = [{ type:"Point", "coordinates": [infodata[0].lat(),infodata[0].lng()]}];
@@ -331,10 +335,7 @@
 						  
 						  //create reference to firebase remote database				  
 	 					  var scoreListRef = new Firebase('https://parkspace.firebaseio.com/scoreList');
-						 
-						  infodata[0] = aMarker.getPosition();
-						  infodata[1] = info.getContent();
-						  
+		
 						  //increment the global variable scoreCount to keep score of number of reports/actions by participant.
 						  scoreCount += 1;
 						  // push score to score list database in firebase.
