@@ -128,6 +128,8 @@
 		  		function addListenerMarker(aMarker, aStreet , aBay , map )
 		        {
 					
+					
+					
 					var parkinContent = [];
 					var parkinDetails;
 					
@@ -135,7 +137,7 @@
 					parkinContent[0] = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + 
 					" (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = #  onclick=toReport()> Report issues</a> </p> "  + 
 					" <p  id=park align=center> <a href= #  target =_self onClick=toAccess() id = park > Park </a></p>" + 
-					" <p  id=leave align=center><a href=# target = _self onClick= notAccess() > Leave </a></p>  </div> " ;
+					" <p  id=leave align=center><a href=# target = _self onClick=notAccess() > Leave </a></p>  </div> " ;
 					
 					parkinContent[1] = "<div><p><b>Street: </b> "  + aStreet + " </p> "  + "<p ><b>Restrictions:</b>" + aBay + "  " + 
 					" (last updated: 15|04|16 ) </p>" + "<p id = report  align=center > <a href = #  onclick=toReport()> Report issues</a> </p> "  + 
@@ -195,7 +197,7 @@
                     
    	   			     google.maps.event.addListener(aMarker, 'click', function( event) {
 						 
-
+						 
 						
 					/**
 					  * name: toAccess
@@ -207,12 +209,14 @@
 					  **/
   	   	 		     toAccess = function()
 		              {
-						  
+						 isAccessible = true;
 						   
                       // set up precondition to set label only when there isAccessbile flag is true.
 				     if(isAccessible === true){
 							  
 						   aMarker.setLabel('x');
+						   
+						   markerX = aMarker;
 							   
 					       info.close();
 							  
@@ -223,7 +227,7 @@
   	   					   alert("Parking taken");
   	   					   
 
-						   isAccessible = false;
+						    isAccessible = false;
 					  } 
 
 						   
@@ -249,9 +253,9 @@
 					   
                              // precondition to check flag has been set false by access function and the marker 
                              // being reset is one labelled X
-						    if((isAccessible == false) && (aMarker.getLabel() === 'x')){
+						    if((this.isAccessible == false) && (markerX.getLabel() === 'x')){
 						
-						       aMarker.setLabel('');
+						       markerX.setLabel('');
 						   
  					           $(this).on(setoffMarkers(aMarker , aStreet , aBay , map ));
 	
