@@ -1,0 +1,10 @@
+{
+  "report": [
+	  { "id": 1, "street": "church_street", "availability": "true" } 
+   ],
+   "comments": [
+    { "id": 1, "report": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "lanre" }
+
+}

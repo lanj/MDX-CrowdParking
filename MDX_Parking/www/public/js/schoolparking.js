@@ -1,0 +1,230 @@
+/**
+ * @fileOverview  eqfed_callback json objects
+ * @author <a href="mailto:lj297@mdx.ac.uk">Lanre Jinadu</a>
+ * @version 0.3
+ */
+
+
+/**
+  * campus parking bays
+  * object returns coordinates and properties of features.
+  * @class eqfeed_callback
+  * @param {features}
+  * @param {geometry}
+  * @param {properties}
+  * @return results
+  */
+eqfeed_callback({
+"type": "FeatureCollection",
+"features": [
+	{"type": "Feature",
+		"geometry":{ "type": "Point", "coordinates": [-0.22853493690490723, 51.59058766544985 ]},
+	"properties": { "bays": "williams building left" , "baytype":"campus parking"}
+	},
+    {"type": "Feature",
+		"geometry" :{"type": "Point", "coordinates": [-0.2290096879005433 , 51.59064265640098]},
+		"properties": {"bays": "williams building right", "baytype":" campus parking"}
+	},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22876828908920288 , 51.59060099659564 ]},
+	"properties": {"bays": "williams building central" , "baytye":"campus parking"}
+	
+},  
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.2287629246711731, 51.5906874894784 ]},
+	"properties": { "street": "williams central isle", "baytype":"campus parking "}
+},
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.22873342037200928, 51.590754304490915 ]},
+	"properties": { "street": "williams central isle", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.22857517004013062, 51.590675984217754]},
+	"properties": { "street": "williams central isle", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.228857557744979858, 51.590765969009]},
+	"properties": { "street": "central isle ", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.22888898849487305, 51.5907143117682 ]},
+	"properties": { "street": "central isle", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2287629246711731 , 51.59068764894784 ]},
+	"properties": {"street": "CENTRAL LOWER ISLE" , "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22873342037200928 , 51.590754304490915 ]},
+	"properties": {"street": "central isle", "baytype":"campus parking"}
+},    
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.22892117500305176, 51.59083762382214 ]},
+	"properties": { "street": "central isle", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22886216640472412 , 51.5908442893189 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22876828908920288 , 51.59060099659564 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2290096879005433 , 51.59064265640098 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+	
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22860735654830933, 51.59081429439604 ]},
+	"properties": {"street": " william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22840484976768494 , 51.59072930867373 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22840619087219238 , 51.59069931367494 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22841691970825195 , 51.590685982558 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+		"geometry" :{"type": "Point", "coordinates": [-0.2284356951713562, 51.5906109949524 ]},
+		"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22840619087219238 , 51.59069931367494 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22840619087219238 , 51.59069931367494 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22957295179367065 , 51.590897613577305]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2292671799659729 , 51.59087428422197 ]},
+	"properties": {"street": "behind william building", "baytype":"campus parking"}
+},
+	{"type": "Feature",
+		"geometry":{ "type": "Point", "coordinates": [-0.2299430963772583, 51.590715977565594 ]},
+	"properties": { "street": "central area" , "baytype":"campus parking"}
+	},
+    {"type": "Feature",
+		"geometry" :{"type": "Point", "coordinates": [-0.2298787236213684 , 51.59089594719519 ]},
+		"properties": {"street": "central area", "baytype":"campus parking"}
+	},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22999674081802368 , 51.59088261613596 ]},
+	"properties": {"street": "north end", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.23016571998596191, 51.59094760501272 ]},
+	"properties": { "street": "North central Library bay", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.23016571998596191, 51.59094760501272 ]},
+	"properties": { "street": "North central library", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22999674081802368 , 51.5908826163596]},
+	"properties": {"street": "North central library" , "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23016571998596191 , 51.59094760501272 ]},
+	"properties": {"street": "North end library ", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry":{ "type": "Point", "coordinates": [-0.22999674081802368, 51.59088261613596 ]},
+	"properties": { "street": "North library", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23016571998596191, 51.59094760501272 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.230138897895813, 51.591029257572224]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2299511432647705, 51.59106091872929 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.22996455430984497, 51.59101759292987 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2303965616226196, 51.59074097339013 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2307184267044067, 51.5907576372655 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23019790649414062, 51.5907630197462 ]},
+	"properties": {"street": "Library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23016571998596191, 51.59094760501272 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.230138897895813, 51.591029257572224]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2308577299118042, 51.59074263977794]},
+	"properties": {"street": "Vine", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23034006357192993, 51.590670985046785 ]},
+	"properties": {"street": "Vine", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2302810549736023, 51.590670985046785 ]},
+	"properties": {"street": "vine ", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23066997528076172, 51.59101259379651]},
+	"properties": {"street": "vine", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23051977157592773, 51.59092927482614 ]},
+	"properties": {"street": "Library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23016571998596191, 51.59094760501272 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23051977157592773, 51.59082762547532]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},
+{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23029983043670654, 51.59082762547532 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2307826280593872, 51.590880949753284 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2309301495552063, 51.59097426708912 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.23099184036254883, 51.59075263810351 ]},
+	"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+	"geometry" :{"type": "Point", "coordinates": [-0.2307184267044067, 51.5907576372655 ]},
+	"properties": {"street": "Library", "baytype":"campus parking"}
+
+},{"type": "Feature",
+		"geometry" :{"type": "Point", "coordinates": [-0.23051977157592773, 51.59092927482614]},
+		"properties": {"street": "central isle", "baytype":"campus parking"}
+},{"type": "Feature",
+		"geometry" :{"type": "Point", "coordinates": [-0.23029983043670654, 51.59082762547532 ]},
+		"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+		"geometry" :{"type": "Point", "coordinates": [-0.2298840880393982, 51.59128254610856 ]},
+		"properties": {"street": "North library", "baytype":"campus parking"}
+},{"type": "Feature",
+		"geometry" :{"type": "Point", "coordinates": [-0.23019522428512573, 51.59131587355815 ]},
+		"properties": {"street": "North library", "baytype":"campus parking"}
+}	
+
+]
+
+})
+
