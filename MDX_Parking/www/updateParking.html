@@ -29,9 +29,7 @@
   
   
  	<body>
-	 <div id="qunit"> </div>
-	   <div id="qunit-fixture"></div>
-	   <script src="https://code.jquery.com/qunit/qunit-1.23.1.js"></script>
+
     <!-- container for mobile app -->
 	<div id="container"> 
 		<nav>
@@ -48,28 +46,39 @@
 				</li>						
 			</ul>
 	  	<nav> 
-	
-    	<section id="breadcrumb"><h2 align="center">  </h2></section>
-		</br>
-		
+	<div id="map"> </div>
 
-  		<div id="map"> </div>
+
+<div margin-top:400px; width="auto">
+	    <div  style=float:left; text-align=center ><label>Hide Markers"</label>
+	       <input  onclick="clearMarkers();" type=button value="         "> </div>
+        <div style=float:right; text-align=center><label>Show markers</label>
+	      <input  onclick="showMarkers();" type=button  value = "          "> 
+	    </div> 
+	</br>
+</br>
+</br>
+</div>
+		 
+</hr>
+
 
 	<!--   call google api for maps   -->	
 	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer>
 	</script>
 	
 	<!--  adds the command and navigation buttons for the mobile app -->
-	<div id="floating-panel">
-	      <input onclick="clearMarkers();" type=button value="Hide Markers">
-	      <input onclick="showMarkers();" type=button value="Show All Markers">
-	      <input onclick="deleteMarkers();" type=button value="Delete Markers">
-	  </div>
-
-	<footer>
-		
-		<ul id="menu" class="Floor"> 
 	
+	
+		
+
+ 
+	<footer>	
+
+
+	  </br>
+
+		<ul id="menu" class="Floor"> 
 
   <li class="menuFloor shadow" >
 	  <a href="schoolParkingMap.html" target= "_self"> Campus </a> </li>
@@ -78,9 +87,9 @@
 	  <a href="updateParking.html" target="_self"> Update </a>
 
   </li>	
-    <li class="menuFloor shadow">
-          <a href="Report.html" target = "_self"> Report  </a>
-	</li>
+  <li class="menuFloor shadow">
+    <a href="Report.html" target = "_self"> Report  </a>
+  </li>
 
     <li class="menuFloor shadow">
 	  <a href="carparks.html" target="_self"> Off Street</a>
